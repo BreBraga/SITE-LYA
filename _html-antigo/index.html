@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lya Cartomante · Consultas, valores e promoções</title>
+  <meta name="description" content="Leituras de tarot e baralho cigano com resposta em áudio no WhatsApp. Veja os valores das consultas e as promoções do mês.">
+  <meta name="theme-color" content="#3B2150">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bellota+Text:wght@300;400;700&family=Cormorant+Unicase:wght@500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<!-- ===== Símbolos reutilizados (traço fino, como nas referências) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-brilho" viewBox="0 0 24 24">
+      <path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-lua" viewBox="0 0 48 48">
+      <path d="M30 5A20 20 0 1 0 43 34 16 16 0 0 1 30 5Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="38" cy="10" r="1.2" fill="currentColor"/><circle cx="43" cy="18" r=".9" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-sol" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M24 3v8M24 37v8M3 24h8M37 24h8M9 9l5.5 5.5M33.5 33.5 39 39M39 9l-5.5 5.5M14.5 33.5 9 39"/>
+      </g>
+      <circle cx="24" cy="24" r="2" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-olho" viewBox="0 0 48 48">
+      <path d="M3 25C12 12 36 12 45 25 36 38 12 38 3 25Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="24" cy="25" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="24" cy="25" r="2.6" fill="currentColor"/>
+      <g stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M24 7v5M14 10l2 4.5M34 10l-2 4.5M6 15l3.5 3M42 15l-3.5 3"/></g>
+    </symbol>
+    <symbol id="i-vinculo" viewBox="0 0 48 48">
+      <circle cx="18" cy="25" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="30" cy="25" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M24 4.5C24.4 7.6 25.8 9 29 9.5 25.8 10 24.4 11.4 24 14.5 23.6 11.4 22.2 10 19 9.5 22.2 9 23.6 7.6 24 4.5Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-estrela" viewBox="0 0 48 48">
+      <path d="M24 4l5 13.5L43 15l-9.5 10.5L41 38l-13.2-5L24 46l-3.8-13L7 38l7.5-12.5L5 15l14 2.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="24" cy="25" r="2.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-whats" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3Z"/>
+    </symbol>
+
+    <!-- Verso de carta: moldura dupla, losango, lua e sol -->
+    <symbol id="verso" viewBox="0 0 120 200">
+      <rect x="1" y="1" width="118" height="198" rx="7" fill="#2A1840"/>
+      <rect x="7" y="7" width="106" height="186" rx="4" fill="none" stroke="#E0A86A" stroke-width=".9"/>
+      <rect x="11" y="11" width="98" height="178" rx="2" fill="none" stroke="#E0A86A" stroke-width=".5" opacity=".7"/>
+      <path d="M60 30 92 100 60 170 28 100Z" fill="none" stroke="#E0A86A" stroke-width=".7"/>
+      <path d="M60 46 84 100 60 154 36 100Z" fill="none" stroke="#E0A86A" stroke-width=".5" opacity=".6"/>
+      <circle cx="60" cy="100" r="13" fill="none" stroke="#E0A86A" stroke-width=".8"/>
+      <path d="M64 89a11 11 0 1 0 7 15 9 9 0 0 1-7-15Z" fill="#E0A86A"/>
+      <g fill="#E0A86A">
+        <circle cx="60" cy="20" r="1.4"/><circle cx="60" cy="180" r="1.4"/>
+        <circle cx="20" cy="100" r="1"/><circle cx="100" cy="100" r="1"/>
+        <path d="M22 22l1.2 3 3 1.2-3 1.2-1.2 3-1.2-3-3-1.2 3-1.2Z"/>
+        <path d="M98 22l1.2 3 3 1.2-3 1.2-1.2 3-1.2-3-3-1.2 3-1.2Z"/>
+        <path d="M22 170l1.2 3 3 1.2-3 1.2-1.2 3-1.2-3-3-1.2 3-1.2Z"/>
+        <path d="M98 170l1.2 3 3 1.2-3 1.2-1.2 3-1.2-3-3-1.2 3-1.2Z"/>
+      </g>
+      <g stroke="#E0A86A" stroke-width=".5" opacity=".7">
+        <path d="M60 22v6M60 172v6M60 62v-6M60 138v6"/>
+      </g>
+    </symbol>
+
+    <!-- Frente "A Lua" para a tiragem do topo -->
+    <symbol id="frente-lua" viewBox="0 0 120 200">
+      <rect x="1" y="1" width="118" height="198" rx="7" fill="#F4EBDC"/>
+      <rect x="7" y="7" width="106" height="186" rx="4" fill="none" stroke="#3B2150" stroke-width=".9"/>
+      <rect x="11" y="11" width="98" height="152" fill="none" stroke="#3B2150" stroke-width=".5"/>
+      <text x="60" y="26" text-anchor="middle" font-family="Cormorant Unicase, serif" font-size="9" fill="#3B2150">XVIII</text>
+      <path d="M70 52a30 30 0 1 0 20 46 24 24 0 0 1-20-46Z" fill="#C9B4E4" stroke="#3B2150" stroke-width=".9"/>
+      <g fill="#3B2150">
+        <path d="M86 50l1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1Z"/>
+        <path d="M30 60l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8Z"/>
+        <path d="M92 120l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8Z"/>
+        <circle cx="26" cy="128" r=".9"/><circle cx="96" cy="70" r=".9"/><circle cx="40" cy="40" r=".7"/>
+      </g>
+      <g stroke="#3B2150" stroke-width=".6" fill="none">
+        <path d="M14 160c10-10 22-14 30-10M106 160c-10-10-22-14-30-10"/>
+        <path d="M22 151c2-4 6-5 8-3M98 151c-2-4-6-5-8-3"/>
+      </g>
+      <text x="60" y="182" text-anchor="middle" font-family="Cormorant Unicase, serif" font-size="11" letter-spacing="2" fill="#3B2150">A LUA</text>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="pular" href="#consultas">Pular para os valores</a>
+
+<!-- ===== Topo ===== -->
+<header class="topo">
+  <a class="marca" href="#inicio" aria-label="Lya Cartomante, início">
+    <span class="marca__nome">Lya</span>
+    <span class="marca__oficio">cartomante</span>
+  </a>
+  <nav class="topo__nav" aria-label="Seções">
+    <a href="#promocoes">Promoções</a>
+    <a href="#consultas">Consultas</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#duvidas">Dúvidas</a>
+  </nav>
+  <a class="botao botao--fino" data-wa="Olá, Lya! Vim pelo site e quero agendar uma consulta." href="#">
+    <svg aria-hidden="true"><use href="#i-whats"/></svg> Agendar
+  </a>
+</header>
+
+<main id="inicio">
+
+  <!-- ===== Hero: a tiragem ===== -->
+  <section class="hero">
+    <div class="hero__texto">
+      <p class="rotulo">Tarot · Baralho cigano · Leituras por WhatsApp</p>
+      <h1 class="hero__titulo">
+        Clareza para<br><span class="linha">o seu <span class="script">caminho</span></span>
+      </h1>
+      <p class="hero__lead">
+        Você escolhe a consulta, agenda o horário e recebe a leitura em áudio no seu WhatsApp, no dia marcado.
+      </p>
+      <div class="hero__acoes">
+        <a class="botao" href="#consultas">Ver consultas e valores</a>
+        <a class="botao botao--contorno" href="#promocoes">Promoção do mês</a>
+      </div>
+    </div>
+
+    <div class="leque" aria-hidden="true">
+      <svg class="leque__carta" style="--i:-2"><use href="#verso"/></svg>
+      <svg class="leque__carta" style="--i:-1"><use href="#verso"/></svg>
+      <svg class="leque__carta leque__carta--frente" style="--i:0"><use href="#frente-lua"/></svg>
+      <svg class="leque__carta" style="--i:1"><use href="#verso"/></svg>
+      <svg class="leque__carta" style="--i:2"><use href="#verso"/></svg>
+      <svg class="leque__brilho leque__brilho--a"><use href="#i-brilho"/></svg>
+      <svg class="leque__brilho leque__brilho--b"><use href="#i-brilho"/></svg>
+      <svg class="leque__brilho leque__brilho--c"><use href="#i-brilho"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== O que te traz aqui ===== -->
+  <section class="intencao" aria-labelledby="intencao-titulo">
+    <h2 id="intencao-titulo" class="intencao__titulo">O que te traz aqui hoje?</h2>
+    <ul class="intencao__lista">
+      <li>
+        <a href="#c-pergunta" class="intencao__item" data-destaca="c-pergunta">
+          <svg aria-hidden="true"><use href="#i-brilho"/></svg>
+          <span><strong>Uma dúvida pontual</strong>Preciso de uma resposta direta</span>
+        </a>
+      </li>
+      <li>
+        <a href="#c-amor" class="intencao__item" data-destaca="c-amor">
+          <svg aria-hidden="true"><use href="#i-vinculo"/></svg>
+          <span><strong>O coração em dúvida</strong>Quero entender uma relação</span>
+        </a>
+      </li>
+      <li>
+        <a href="#c-acompanhamento" class="intencao__item" data-destaca="c-acompanhamento">
+          <svg aria-hidden="true"><use href="#i-estrela"/></svg>
+          <span><strong>Uma fase difícil</strong>Quero acompanhamento de perto</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===== Promoções ===== -->
+  <!-- Para trocar a promoção do mês: edite os textos abaixo e a data em data-fim (AAAA-MM-DD). -->
+  <section class="promocoes" id="promocoes" aria-labelledby="promo-titulo">
+    <div class="promocoes__cabeca">
+      <p class="rotulo rotulo--vela">Promoções ativas</p>
+      <h2 id="promo-titulo" class="titulo-secao">A carta do <span class="script">mês</span></h2>
+    </div>
+
+    <div class="promocoes__grade">
+      <button class="carta-mes" type="button" aria-label="Revelar a promoção do mês" aria-pressed="false">
+        <span class="carta-mes__giro">
+          <span class="carta-mes__verso">
+            <svg aria-hidden="true"><use href="#verso"/></svg>
+            <span class="carta-mes__dica">Toque para revelar</span>
+          </span>
+          <span class="carta-mes__frente">
+            <span class="carta-mes__mes">Novembro</span>
+            <svg class="carta-mes__icone" aria-hidden="true"><use href="#i-lua"/></svg>
+            <span class="carta-mes__nome">Tiragem de três</span>
+            <span class="carta-mes__de">de R$ 120</span>
+            <span class="carta-mes__preco"><small>R$</small>89</span>
+            <span class="carta-mes__prazo" data-fim="2026-11-30">válida até 30/11</span>
+          </span>
+        </span>
+      </button>
+
+      <div class="promocoes__lado">
+        <div class="promo-mes-texto">
+          <p>Três perguntas sobre o mesmo assunto ou sobre assuntos diferentes, com até 25 minutos de leitura em áudio.</p>
+          <a class="botao botao--vela" data-wa="Olá, Lya! Quero a promoção do mês: Tiragem de três por R$ 89." href="#">Quero a carta do mês</a>
+        </div>
+
+        <ul class="promo-lista">
+          <li class="promo">
+            <svg class="promo__icone" aria-hidden="true"><use href="#i-brilho"/></svg>
+            <div>
+              <h3 class="promo__titulo">Primeira leitura</h3>
+              <p>10% de desconto em qualquer consulta. Use o cupom <span class="cupom">PRIMEIRALUA</span> ao agendar.</p>
+            </div>
+          </li>
+          <li class="promo">
+            <svg class="promo__icone" aria-hidden="true"><use href="#i-vinculo"/></svg>
+            <div>
+              <h3 class="promo__titulo">Leve uma amiga</h3>
+              <p>Duas consultas de Pergunta única por R$ 80, uma para você e outra para quem você indicar.</p>
+            </div>
+          </li>
+          <li class="promo">
+            <svg class="promo__icone" aria-hidden="true"><use href="#i-sol"/></svg>
+            <div>
+              <h3 class="promo__titulo">Vale-presente</h3>
+              <p>Qualquer consulta pode virar presente. A pessoa recebe um cartão digital e agenda quando quiser.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Consultas e valores: a mesa ===== -->
+  <section class="mesa" id="consultas" aria-labelledby="consultas-titulo">
+    <div class="mesa__cabeca">
+      <p class="rotulo">Consultas e valores</p>
+      <h2 id="consultas-titulo" class="titulo-secao">Escolha a sua <span class="script">leitura</span></h2>
+      <p class="mesa__nota">Todas as leituras são enviadas em áudio pelo WhatsApp. Pagamento por Pix ou cartão no momento do agendamento.</p>
+    </div>
+
+    <div class="mesa__cartas">
+      <article class="arcano" id="c-pergunta">
+        <svg class="arcano__icone" aria-hidden="true"><use href="#i-brilho"/></svg>
+        <p class="arcano__formato">1 pergunta · até 10 min</p>
+        <h3 class="arcano__nome">Pergunta única</h3>
+        <p class="arcano__desc">Para uma dúvida pontual que precisa de resposta direta.</p>
+        <p class="arcano__preco"><small>R$</small>50</p>
+        <a class="botao botao--carta" data-wa="Olá, Lya! Quero agendar a Pergunta única (R$ 50)." href="#">Agendar</a>
+      </article>
+
+      <article class="arcano arcano--destaque" id="c-tres">
+        <span class="arcano__selo">Mais pedida</span>
+        <svg class="arcano__icone" aria-hidden="true"><use href="#i-lua"/></svg>
+        <p class="arcano__formato">3 perguntas · até 25 min</p>
+        <h3 class="arcano__nome">Tiragem de três</h3>
+        <p class="arcano__desc">Passado, presente e tendência de uma situação, ou três perguntas diferentes.</p>
+        <p class="arcano__preco"><small>R$</small>120</p>
+        <a class="botao botao--carta" data-wa="Olá, Lya! Quero agendar a Tiragem de três (R$ 120)." href="#">Agendar</a>
+      </article>
+
+      <article class="arcano" id="c-amor">
+        <svg class="arcano__icone" aria-hidden="true"><use href="#i-vinculo"/></svg>
+        <p class="arcano__formato">Leitura focada · 30 min</p>
+        <h3 class="arcano__nome">Amor e vínculos</h3>
+        <p class="arcano__desc">O que está em jogo numa relação: sentimentos, intenções e caminhos possíveis.</p>
+        <p class="arcano__preco"><small>R$</small>140</p>
+        <a class="botao botao--carta" data-wa="Olá, Lya! Quero agendar a leitura Amor e vínculos (R$ 140)." href="#">Agendar</a>
+      </article>
+
+      <article class="arcano" id="c-mesa">
+        <svg class="arcano__icone" aria-hidden="true"><use href="#i-olho"/></svg>
+        <p class="arcano__formato">36 cartas · 45 min</p>
+        <h3 class="arcano__nome">Mesa aberta</h3>
+        <p class="arcano__desc">Leitura completa no baralho cigano: amor, trabalho, família, saúde e o que está chegando.</p>
+        <p class="arcano__preco"><small>R$</small>180</p>
+        <a class="botao botao--carta" data-wa="Olá, Lya! Quero agendar a Mesa aberta (R$ 180)." href="#">Agendar</a>
+      </article>
+
+      <article class="arcano" id="c-ano">
+        <svg class="arcano__icone" aria-hidden="true"><use href="#i-sol"/></svg>
+        <p class="arcano__formato">12 cartas · 1 h</p>
+        <h3 class="arcano__nome">Mapa do ano 2027</h3>
+        <p class="arcano__desc">Uma carta-guia para cada mês do ano, com as energias e os cuidados de cada fase.</p>
+        <p class="arcano__preco"><small>R$</small>270</p>
+        <a class="botao botao--carta" data-wa="Olá, Lya! Quero agendar o Mapa do ano 2027 (R$ 270)." href="#">Agendar</a>
+      </article>
+
+      <article class="arcano" id="c-acompanhamento">
+        <svg class="arcano__icone" aria-hidden="true"><use href="#i-estrela"/></svg>
+        <p class="arcano__formato">3 leituras no mês</p>
+        <h3 class="arcano__nome">Acompanhamento</h3>
+        <p class="arcano__desc">Para atravessar uma fase com orientação constante: uma leitura a cada dez dias.</p>
+        <p class="arcano__preco"><s>R$ 420</s><small>R$</small>360</p>
+        <a class="botao botao--carta" data-wa="Olá, Lya! Quero agendar o Acompanhamento mensal (R$ 360)." href="#">Agendar</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Como funciona (sequência real) ===== -->
+  <section class="como" id="como-funciona" aria-labelledby="como-titulo">
+    <h2 id="como-titulo" class="titulo-secao">Como funciona</h2>
+    <ol class="passos">
+      <li class="passo">
+        <span class="passo__num">I</span>
+        <h3>Escolha a consulta</h3>
+        <p>Veja as leituras acima e clique em “Agendar” na que fizer sentido para você.</p>
+      </li>
+      <li class="passo">
+        <span class="passo__num">II</span>
+        <h3>Combine o horário</h3>
+        <p>No WhatsApp, você escolhe o dia, envia suas perguntas e paga por Pix ou cartão.</p>
+      </li>
+      <li class="passo">
+        <span class="passo__num">III</span>
+        <h3>Receba a leitura</h3>
+        <p>No dia marcado, a leitura chega em áudio. Ouça ao vivo ou quando puder, com calma.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== Depoimentos ===== -->
+  <!-- ATENÇÃO: textos de exemplo. Substituir por depoimentos reais das clientes antes de publicar. -->
+  <section class="vozes" aria-labelledby="vozes-titulo">
+    <h2 id="vozes-titulo" class="titulo-secao">Quem já <span class="script">consultou</span></h2>
+    <div class="vozes__grade">
+      <figure class="voz">
+        <blockquote>“Saí da leitura com a cabeça no lugar. Ela foi clara sem ser dura, e explicou cada carta.”</blockquote>
+        <figcaption>Nome da cliente · Tiragem de três</figcaption>
+      </figure>
+      <figure class="voz">
+        <blockquote>“O áudio chegou certinho no horário. Ouvi duas vezes e anotei tudo. Já agendei o mapa do ano.”</blockquote>
+        <figcaption>Nome da cliente · Mesa aberta</figcaption>
+      </figure>
+      <figure class="voz">
+        <blockquote>“Fiz o acompanhamento durante uma mudança de emprego e me senti amparada o mês inteiro.”</blockquote>
+        <figcaption>Nome da cliente · Acompanhamento</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== Sobre ===== -->
+  <section class="sobre" aria-labelledby="sobre-titulo">
+    <div class="sobre__arco" aria-hidden="true">
+      <!-- Trocar por foto da Lya: <img src="FOTOS/lya.jpg" alt=""> -->
+      <svg class="sobre__lua"><use href="#i-lua"/></svg>
+    </div>
+    <div class="sobre__texto">
+      <p class="rotulo">Quem lê as suas cartas</p>
+      <h2 id="sobre-titulo" class="titulo-secao">Eu sou a <span class="script">Lya</span></h2>
+      <p>Trabalho com tarot e baralho cigano para ajudar você a enxergar com mais nitidez o momento que está vivendo. A leitura não decide por você: ela mostra caminhos, tendências e pontos de atenção para que você escolha com mais consciência.</p>
+      <p>Cada consulta é feita no dia agendado, com tempo e cuidado, e enviada em áudio para você ouvir quantas vezes precisar.</p>
+    </div>
+  </section>
+
+  <!-- ===== Dúvidas ===== -->
+  <section class="duvidas" id="duvidas" aria-labelledby="duvidas-titulo">
+    <h2 id="duvidas-titulo" class="titulo-secao">Dúvidas frequentes</h2>
+    <div class="duvidas__lista">
+      <details>
+        <summary>Como recebo a leitura?</summary>
+        <p>Em áudio, pelo WhatsApp, no dia e horário agendados. Você pode ouvir na hora ou depois.</p>
+      </details>
+      <details>
+        <summary>Preciso estar online no horário?</summary>
+        <p>Não. Se preferir acompanhar ao vivo, avise no agendamento. Se não, o áudio fica guardado na conversa para quando você puder ouvir.</p>
+      </details>
+      <details>
+        <summary>Como faço o pagamento?</summary>
+        <p>Por Pix ou cartão, no momento do agendamento. O horário fica reservado assim que o pagamento é confirmado.</p>
+      </details>
+      <details>
+        <summary>Posso remarcar?</summary>
+        <p>Sim, com pelo menos 24 horas de antecedência. É só avisar pelo WhatsApp.</p>
+      </details>
+      <details>
+        <summary>Como uso um cupom ou promoção?</summary>
+        <p>Informe o cupom ou o nome da promoção na mensagem de agendamento. O desconto é aplicado antes do pagamento.</p>
+      </details>
+      <details>
+        <summary>A leitura substitui médico, advogado ou terapeuta?</summary>
+        <p>Não. O tarot é uma ferramenta de orientação e autoconhecimento. Questões de saúde, jurídicas ou financeiras devem ser tratadas com profissionais da área.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== Chamada final ===== -->
+  <section class="final">
+    <svg class="final__lua" aria-hidden="true"><use href="#i-lua"/></svg>
+    <h2 class="final__titulo">As cartas estão na <span class="script">mesa</span></h2>
+    <p>Mande uma mensagem e agende a sua leitura.</p>
+    <a class="botao botao--vela" data-wa="Olá, Lya! Vim pelo site e quero agendar uma consulta." href="#">
+      <svg aria-hidden="true"><use href="#i-whats"/></svg> Agendar pelo WhatsApp
+    </a>
+  </section>
+</main>
+
+<footer class="rodape">
+  <a class="marca" href="#inicio" aria-label="Lya Cartomante, voltar ao início">
+    <span class="marca__nome">Lya</span>
+    <span class="marca__oficio">cartomante</span>
+  </a>
+  <p>Leituras entregues no dia agendado.</p>
+  <nav class="rodape__links" aria-label="Redes">
+    <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    <a data-wa="Olá, Lya!" href="#">WhatsApp</a>
+  </nav>
+  <p class="rodape__mini">© <span id="ano">2026</span> Lya Cartomante</p>
+</footer>
+
+<a class="flutuante" data-wa="Olá, Lya! Vim pelo site e quero agendar uma consulta." href="#" aria-label="Agendar pelo WhatsApp">
+  <svg aria-hidden="true"><use href="#i-whats"/></svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>

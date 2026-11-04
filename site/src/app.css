@@ -1,0 +1,117 @@
+/* Só o que é novo na versão React. Cores, tipos e componentes vêm do design system. */
+
+/* ---------- Topo: transparente sobre o hero, sólido ao rolar ---------- */
+.topo {
+  position: fixed;
+  left: 0; right: 0;
+  background: transparent;
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: background-color .35s ease, border-color .35s ease;
+}
+.topo--rolou {
+  background: rgba(30, 16, 41, .84);
+  border-bottom-color: rgba(224, 168, 106, .18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.hero { padding-top: clamp(7.5rem, 11vw, 10rem); }
+html { scroll-padding-top: 110px; }
+
+/* ---------- Tiragem: tire uma carta ---------- */
+.tiragem {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+.tiragem__mesa {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  height: 450px;
+}
+.tiragem__carta {
+  --w: 168px;
+  appearance: none;
+  border: 0; padding: 0; margin: 0;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  left: calc(50% - var(--w) / 2);
+  bottom: 44px;
+  width: var(--w);
+  aspect-ratio: 3 / 5;
+  transform-origin: 50% 135%;
+  perspective: 1200px;
+  border-radius: 10px;
+}
+.tiragem__carta:disabled { cursor: default; }
+.tiragem__giro {
+  display: block;
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+}
+.tiragem__face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 14px 24px -6px rgba(10, 4, 18, .6);
+}
+.tiragem__face svg { display: block; width: 100%; height: 100%; }
+.tiragem__face--frente { transform: rotateY(180deg); }
+
+.tiragem__brilho { position: absolute; color: var(--vela); animation: cintilar 4s ease-in-out infinite; pointer-events: none; }
+.tiragem__brilho--a { width: 24px; height: 24px; top: 2%; left: 12%; }
+.tiragem__brilho--b { width: 15px; height: 15px; top: 14%; right: 8%; animation-delay: 1.3s; }
+.tiragem__brilho--c { width: 11px; height: 11px; top: 0; right: 30%; animation-delay: 2.4s; }
+
+.tiragem__leitura {
+  min-height: 10.5rem;
+  max-width: 400px;
+  text-align: center;
+  color: var(--pergaminho);
+}
+.tiragem__convite {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: .22em;
+  font-size: .95rem;
+  color: var(--lavanda);
+}
+.tiragem__nome {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+.tiragem__nome span { color: var(--vela); font-size: .62em; letter-spacing: .12em; margin-right: .25em; }
+.tiragem__mensagem { color: var(--pergaminho-mudo); margin: .45rem 0 1rem; }
+.tiragem__acoes { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.4rem; }
+.tiragem__link, .tiragem__outra {
+  font: inherit;
+  font-size: .95rem;
+  text-underline-offset: .25em;
+}
+.tiragem__link { color: var(--vela); font-weight: 700; }
+.tiragem__outra {
+  appearance: none; background: none; border: 0; padding: 0;
+  color: var(--lavanda);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- Mesa: o lugar de cada carta (o wrapper anima a entrada) ---------- */
+.mesa__lugar { display: flex; }
+.mesa__lugar > .arcano { flex: 1; width: 100%; }
+.mesa__lugar .arcano { --giro: -1.4deg; }
+.mesa__lugar:nth-child(2n) .arcano { --giro: 1.1deg; }
+.mesa__lugar:nth-child(3n) .arcano { --giro: -.5deg; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 860px) {
+  .tiragem__mesa { height: 330px; max-width: 360px; }
+  .tiragem__carta { --w: 120px; bottom: 30px; }
+}

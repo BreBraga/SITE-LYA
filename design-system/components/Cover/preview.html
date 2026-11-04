@@ -1,0 +1,64 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="pt-BR" data-theme="padrao">
+<head>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../bundle.css">
+<meta charset="utf-8">
+<title>Lya Cartomante</title>
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--nevoa); color:var(--tinta); font-family:var(--font-corpo); overflow:hidden; }
+  .cover { position:relative; width:960px; height:288px; overflow:hidden; }
+  .art { position:absolute; top:0; left:480px; width:480px; height:288px; overflow:hidden; }
+  .art svg { display:block; width:480px; height:288px; }
+  .ameixa { fill:var(--ameixa); }
+  .toalha { fill:var(--toalha); }
+  .lavanda { fill:var(--lavanda); }
+  .vela { fill:var(--vela); }
+  .carta { rx:var(--raio); }
+  .moldura { fill:none; rx:var(--raio-moldura); stroke-width:1; }
+  .moldura.ouro { stroke:var(--vela); }
+  .moldura.tinta { stroke:var(--ameixa); }
+  .moldura.fina { opacity:.45; }
+  /* pílula de 24px de altura: rx = metade do lado curto */
+  .selo { rx:12px; }
+  .words { position:absolute; left:48px; bottom:40px; max-width:440px; }
+  .name { margin:0; font-family:var(--font-display); font-weight:600; font-size:78px; line-height:.95; color:var(--tinta); }
+  .tag { margin:12px 0 0 2px; font-size:14px; line-height:20px; color:var(--tinta-suave); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  blocks      ameixa 168×280 sangrando pelo topo (a marca, maior) · toalha 144×240 · lavanda 144×240 sangrando à direita e embaixo · vela só no selo 84×24 — ≈36% de 960×288
+  arrangement três cartas 3:5 pousadas tortas como na mesa (−1.4°, 1.1°, −0.5°), escalonadas da esquerda para a direita
+  pattern     motivo literal (a carta): a moldura dupla de cada carta, recuada em moldura-externa (9px) e moldura-interna (13px) — "tudo o que tem preço é carta"
+  scales      cantos raio (14px), molduras raio-moldura (8px), recuos moldura-externa/moldura-interna, selo em pílula (rx 12 = metade de 24)
+-->
+<g transform="rotate(-1.4 120 116)">
+  <rect class="ameixa carta" x="36" y="-24" width="168" height="280" rx="14"/>
+  <rect class="moldura ouro" x="45" y="-15" width="150" height="262" rx="8"/>
+  <rect class="moldura ouro fina" x="49" y="-11" width="142" height="254" rx="8"/>
+</g>
+<g transform="rotate(1.1 268 156)">
+  <rect class="toalha carta" x="196" y="36" width="144" height="240" rx="14"/>
+  <rect class="moldura ouro" x="205" y="45" width="126" height="222" rx="8"/>
+  <rect class="moldura ouro fina" x="209" y="49" width="118" height="214" rx="8"/>
+  <rect class="vela selo" x="226" y="24" width="84" height="24" rx="12"/>
+</g>
+<g transform="rotate(-0.5 424 180)">
+  <rect class="lavanda carta" x="352" y="60" width="144" height="240" rx="14"/>
+  <rect class="moldura tinta" x="361" y="69" width="126" height="222" rx="8"/>
+</g>
+</svg>
+</div>
+<div class="words">
+<h1 class="name">Lya<br>Cartomante</h1>
+<p class="tag">A mesa de leitura: linho ameixa, cartas de pergaminho, luz de vela.</p>
+</div>
+</div>
+</body>
+</html>

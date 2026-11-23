@@ -50,9 +50,8 @@ export function Depoimentos() {
 export function Sobre() {
   return (
     <section className="sobre" aria-labelledby="sobre-titulo">
-      <div className="sobre__arco" aria-hidden="true">
-        {/* Trocar por foto da Lya: coloque o arquivo em site/public/lya.jpg e use <img src="/lya.jpg" alt="" /> */}
-        <Icone id="lua" className="sobre__lua" />
+      <div className="sobre__arco">
+        <img src="/lya.webp" alt="Lya, a cartomante" width="720" height="960" loading="lazy" style={{ objectPosition: "50% 15%" }} />
       </div>
       <div className="sobre__texto">
         <p className="rotulo">Quem lê as suas cartas</p>

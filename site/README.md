@@ -8,4 +8,4 @@ npm run build    # gera a versão final em dist/
 
 - **Conteúdo:** tudo em `src/dados.js` (WhatsApp, Instagram, temas e tiragens com valores e perguntas, promoção do mês, promoções, depoimentos, dúvidas e os arcanos da tiragem do topo).
 - **Visual:** vem de `../design-system` (`tokens.css` e `components/bundle.css`). O que é só desta versão, como a tiragem do topo e o topo transparente, fica em `src/app.css`.
-- **Foto da Lya:** coloque em `public/lya.jpg` e troque o ícone no componente `Sobre` (`src/componentes/Secoes.jsx`).
+- **Foto da Lya:** `public/lya.webp` (recorte 3:4), usada na seção Sobre (`src/componentes/Secoes.jsx`).

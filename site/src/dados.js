@@ -851,15 +851,15 @@ export const passos = [
 ];
 
 // Depoimentos reais, transcritos dos prints da pasta "Feedbacks" do Drive, sem nomes.
-// Os seis primeiros aparecem logo de cara; os outros, no "Ver mais depoimentos".
+// Os primeiros aparecem logo de cara (6 no computador, 3 no celular); os outros, no "Ver mais depoimentos".
 // `tiragem` (opcional) aparece na legenda: { texto: "...", tiragem: "Alma gêmea" }
 export const depoimentos = [
   { texto: "Queria te agradecer de coração pela leitura que você fez pra mim. Você explicou tudo de uma forma super clara e acolhedora, deu pra sentir o cuidado e a atenção em cada detalhe 🥹🥹 Obrigada mesmo por ter tirado um tempinho pra me orientar, eu gostei muito! 🫶🏻" },
   { texto: "Eu to chocada, fez 100% de sentido e você foi certeira em cada ponto. sem duvidas uma das melhores leituras que eu já fiz com alguém, você explica muito bemm" },
+  { texto: "Cara, eu nunca vi algo tão absurdamente certeiro na minha vida. Muito obrigado!" },
   { texto: "Muito obrigada pela sua leitura, de verdade, estava precisando ouvir essa leitura, estava sentindo de fazer essa questão e por fim a solicitei. me senti muito tranquila enquanto fui ouvindo o audio e de certa forma, acalmou a minha ansiedade, mas isso somente foi possivel, porque voce foi muito carinhosa e acolhedora, portanto, muito obrigada por isso tambem." },
   { texto: "obrigada amiga, eu gosto muuito do jeito que você explica a leitura e sempre quis te dizer isso. mesmo mudando a forma de dizer agora, continua sendo muito bem explicado e eu também gosto muito que você sempre toma muito cuidado com as palavras. desde quando eu comecei a fazer tiragens com você e fazia as perguntas estando apreensiva, seu jeito de explicar me tranquilizava bastante! obrigadaa 💗💗" },
   { texto: "fico muito grata pela leitura! e queria elogiar tbm, pq foi maravilhosaa!! bateu 100% com a realidade, sem por nem tirar 😭 e respondeu todas as minhas dúvidas!! eu gostei muito da sua abordagem, com certeza voltarei a tirar com você , mt obrigado! boa noite<3" },
-  { texto: "Cara, eu nunca vi algo tão absurdamente certeiro na minha vida. Muito obrigado!" },
   { texto: "Ai muito muito muito obrigada mesmo. Ressoou muito e agora sei que atitude tomar sobre ela. Você arrasa demais" },
   { texto: "simplesmente amei sua explicação!!! faz muito muito sentido MESMO agradeço imensamente pela leitura ❤️ te achei muito atenciosa e você explica super bem 🥰 parabéns pelo trabalho incrível boa noite e sucesso!!" },
   { texto: "obrigada demais pelo atendimento eu amei adorei demais bateu muito e respondeu mt o que eu queria saber" },

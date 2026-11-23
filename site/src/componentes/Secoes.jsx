@@ -22,13 +22,19 @@ export function ComoFunciona() {
   );
 }
 
-const VISIVEIS = 6;
+// Computador: 6 depoimentos e o "ver mais" abre todos.
+// Celular: só 3, e o "ver mais" abre de 3 em 3.
+const celular = () => typeof window !== "undefined" && window.matchMedia("(max-width: 760px)").matches;
 
 export function Depoimentos() {
-  const [todos, setTodos] = useState(false);
-  const lista = todos ? depoimentos : depoimentos.slice(0, VISIVEIS);
+  const [passo] = useState(() => (celular() ? 3 : null));
+  const inicial = passo ?? 6;
+  const [qtd, setQtd] = useState(inicial);
+  const lista = depoimentos.slice(0, qtd);
+  const restam = depoimentos.length - qtd;
+  const verMais = () => setQtd((q) => (passo ? Math.min(q + passo, depoimentos.length) : depoimentos.length));
   return (
-    <section className="vozes" aria-labelledby="vozes-titulo">
+    <section className="vozes" id="depoimentos" aria-labelledby="vozes-titulo">
       <h2 id="vozes-titulo" className="titulo-secao">Quem já <span className="script">consultou</span></h2>
       <div className="vozes__grade">
         {lista.map((d, i) => (
@@ -38,10 +44,20 @@ export function Depoimentos() {
           </figure>
         ))}
       </div>
-      {depoimentos.length > VISIVEIS && (
-        <button type="button" className="vozes__mais" aria-expanded={todos} onClick={() => setTodos((t) => !t)}>
-          {todos ? "Mostrar menos" : `Ver mais depoimentos (${depoimentos.length - VISIVEIS})`}
-        </button>
+      {depoimentos.length > inicial && (
+        restam > 0 ? (
+          <button type="button" className="vozes__mais" onClick={verMais}>
+            {passo ? "Ver mais depoimentos" : `Ver mais depoimentos (${restam})`}
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="vozes__mais"
+            onClick={() => { setQtd(inicial); document.getElementById("depoimentos")?.scrollIntoView({ block: "start" }); }}
+          >
+            Mostrar menos
+          </button>
+        )
       )}
     </section>
   );

@@ -103,13 +103,6 @@ html { scroll-padding-top: 110px; }
   cursor: pointer;
 }
 
-/* ---------- Mesa: o lugar de cada carta (o wrapper anima a entrada) ---------- */
-.mesa__lugar { display: flex; }
-.mesa__lugar > .arcano { flex: 1; width: 100%; }
-.mesa__lugar .arcano { --giro: -1.4deg; }
-.mesa__lugar:nth-child(2n) .arcano { --giro: 1.1deg; }
-.mesa__lugar:nth-child(3n) .arcano { --giro: -.5deg; }
-
 /* ---------- Mesa: abas por tema ---------- */
 .mesa__cabeca { margin-bottom: 2.2rem; }
 .mesa__abas {
@@ -135,35 +128,141 @@ html { scroll-padding-top: 110px; }
 .mesa__conta { font-size: .78rem; font-weight: 400; opacity: .75; }
 .mesa__tema { max-width: 640px; margin-bottom: 2.6rem; color: var(--pergaminho-mudo); }
 
-/* ---------- Carta: perguntas da tiragem ---------- */
-.arcano__perguntas {
-  width: 100%;
-  margin-bottom: 1.2rem;
-  text-align: left;
-  font-size: .93rem;
-  color: var(--tinta-suave);
+/* ---------- Mesa: baralho de tiragens (cartas que viram) ---------- */
+.mesa__baralho {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: dense;
+  gap: 1.8rem 1.4rem;
 }
-.arcano__perguntas summary {
-  text-align: center;
-  font-weight: 700;
-  color: var(--toalha);
+.mesa__lugar { display: flex; }
+.mesa__lugar > .carta-tiragem { flex: 1; }
+
+.carta-tiragem {
+  --giro: -1.2deg;
+  position: relative;
+  aspect-ratio: 3 / 5;
+  perspective: 1400px;
+  border-radius: 12px;
+  transform: rotate(var(--giro));
+  transition: transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.mesa__lugar:nth-child(2n) .carta-tiragem { --giro: 1deg; }
+.mesa__lugar:nth-child(3n) .carta-tiragem { --giro: -.4deg; }
+.carta-tiragem:hover, .carta-tiragem:focus-within, .carta-tiragem.virada { transform: rotate(0deg) translateY(-6px); }
+
+.carta-tiragem__giro {
+  position: relative; display: block;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .9s cubic-bezier(.3,.1,.2,1);
+}
+.carta-tiragem.virada .carta-tiragem__giro { transform: rotateY(180deg); }
+
+.carta-tiragem__face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: 0 22px 34px -18px rgba(14,6,22,.75);
+}
+.carta-tiragem__face::before, .carta-tiragem__face::after {
+  content: ""; position: absolute; pointer-events: none; border-radius: 7px;
+}
+.carta-tiragem__face::before { inset: 8px; }
+.carta-tiragem__face::after { inset: 12px; opacity: .45; }
+
+/* frente: escura, só o essencial */
+.carta-tiragem__frente {
+  appearance: none; border: 0; margin: 0; font: inherit;
   cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: .25em;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  color: var(--pergaminho);
+  background:
+    var(--ruido),
+    radial-gradient(ellipse at 50% 35%, var(--toalha), var(--ameixa) 70%, var(--verso));
 }
-.arcano__perguntas ol { margin: .8rem 0 0; padding-left: 1.3rem; display: grid; gap: .35rem; }
-.arcano__valores {
-  list-style: none; padding: 0; margin: 0 0 1.3rem;
-  width: 100%; max-width: 240px;
-  display: grid; gap: .3rem;
+.carta-tiragem__frente::before, .carta-tiragem__frente::after { border: 1px solid rgba(224,168,106,.75); }
+.carta-tiragem__frente:focus-visible { outline: 2px solid var(--vela); outline-offset: 4px; }
+.carta-tiragem__formato { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--lavanda); }
+.carta-tiragem__icone { width: 46px; height: 46px; color: var(--vela); margin: .4rem 0 .2rem; }
+.carta-tiragem__nome { font-family: var(--font-display); font-weight: 600; font-size: 1.45rem; line-height: 1.1; }
+.carta-tiragem__preco {
+  display: flex; align-items: flex-start; justify-content: center; flex-wrap: wrap; column-gap: .1em;
+  font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; line-height: 1;
+  color: var(--vela);
 }
-.arcano__valores li {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
-  padding-bottom: .3rem;
-  border-bottom: 1px dashed var(--linha-forte);
+.carta-tiragem__preco small { font-size: .4em; margin-top: .4em; }
+.carta-tiragem__apartir { flex-basis: 100%; font-family: var(--font-corpo); font-weight: 400; font-size: .3em; letter-spacing: .08em; color: var(--lavanda); margin-bottom: .3em; }
+.carta-tiragem__dica {
+  position: absolute; left: 50%; bottom: 1.3rem; transform: translateX(-50%);
+  white-space: nowrap; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--lavanda); opacity: .8;
+}
+
+/* verso: pergaminho com as especificações */
+.carta-tiragem__verso {
+  transform: rotateY(180deg);
+  display: flex; flex-direction: column;
+  padding: 1.5rem 1.2rem 1.2rem;
+  background: var(--pergaminho);
+  color: var(--tinta);
+}
+.carta-tiragem__verso::before, .carta-tiragem__verso::after { border: 1px solid var(--ameixa); }
+.carta-tiragem__verso::before { opacity: .55; }
+.carta-tiragem__voltar {
+  position: absolute; top: 14px; right: 14px; z-index: 1;
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  appearance: none; border: 0; border-radius: 50%;
+  font-size: 1.3rem; line-height: 1;
+  color: var(--ameixa); background: rgba(59,33,80,.08);
+  cursor: pointer;
+}
+.carta-tiragem__voltar:hover { background: rgba(59,33,80,.16); }
+.carta-tiragem__titulo {
+  font-family: var(--font-display); font-size: 1.3rem; line-height: 1.1;
+  color: var(--ameixa);
+  margin: 0 2rem .6rem 0;
+}
+.carta-tiragem__rolagem {
+  position: relative; z-index: 1;
+  flex: 1; min-height: 0;
+  overflow-y: auto;
+  padding-right: .35rem;
+  font-size: .84rem; line-height: 1.45;
   color: var(--tinta-suave);
+  scrollbar-width: thin;
+  scrollbar-color: var(--lavanda) transparent;
 }
-.arcano__valores strong { font-family: var(--font-display); font-size: 1.45rem; color: var(--ameixa); }
+.carta-tiragem__rolagem p { margin: 0 0 .7rem; }
+.carta-tiragem__sub {
+  font-family: var(--font-display); font-weight: 600; font-size: .78rem !important;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--toalha);
+}
+.carta-tiragem__rolagem ol { margin: 0; padding-left: 1.15rem; display: grid; gap: .3rem; }
+.carta-tiragem__valores { list-style: none; padding: 0; margin: .2rem 0 0; display: grid; gap: .3rem; }
+.carta-tiragem__valores li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  padding-bottom: .3rem; border-bottom: 1px dashed var(--linha-forte);
+}
+.carta-tiragem__valores strong { font-family: var(--font-display); font-size: 1.2rem; color: var(--ameixa); }
+.carta-tiragem__pe {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between; gap: .8rem;
+  padding-top: .8rem; margin-top: .6rem;
+  border-top: 1px solid var(--linha);
+}
+.carta-tiragem__pe .botao { flex: 1; padding-inline: .8rem; }
+.carta-tiragem__valor {
+  display: flex; align-items: flex-start; gap: .08em;
+  font-family: var(--font-display); font-weight: 700; font-size: 2rem; line-height: 1; color: var(--ameixa);
+}
+.carta-tiragem__valor small { font-size: .42em; margin-top: .35em; }
+
+.carta-tiragem.chamada .carta-tiragem__face { animation: chamada 1.6s ease; }
 
 /* ---------- Depoimentos: ver mais ---------- */
 .vozes__mais {
@@ -182,6 +281,28 @@ html { scroll-padding-top: 110px; }
 .vozes__mais:hover { background: var(--ameixa); color: var(--nevoa); }
 
 /* ---------- Responsivo ---------- */
+@media (max-width: 1100px) {
+  .mesa__baralho { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 760px) {
+  .mesa__baralho { grid-template-columns: repeat(2, 1fr); gap: 1.2rem .9rem; }
+  /* abas numa linha só, com rolagem lateral */
+  .mesa__abas {
+    flex-wrap: nowrap; overflow-x: auto;
+    margin-inline: calc(-1 * clamp(1.2rem, 4vw, 3rem));
+    padding: 0 clamp(1.2rem, 4vw, 3rem) .4rem;
+    scrollbar-width: none;
+  }
+  .mesa__abas::-webkit-scrollbar { display: none; }
+  .mesa__aba { flex: none; }
+  /* no celular a carta virada ocupa a linha toda, para caber o texto */
+  .mesa__lugar--virada { grid-column: 1 / -1; justify-content: center; }
+  .mesa__lugar--virada .carta-tiragem { flex: 0 1 380px; aspect-ratio: 4 / 5; }
+  .carta-tiragem__nome { font-size: 1.2rem; }
+  .carta-tiragem__preco { font-size: 2.1rem; }
+  .carta-tiragem__icone { width: 38px; height: 38px; }
+  .carta-tiragem__dica { font-size: .62rem; bottom: 1rem; }
+}
 @media (max-width: 860px) {
   .tiragem__mesa { height: 330px; max-width: 360px; }
   .tiragem__carta { --w: 120px; bottom: 30px; }

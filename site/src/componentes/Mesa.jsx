@@ -31,6 +31,7 @@ function Carta({ c, virada, onVirar, chamada }) {
           <span className="carta-tiragem__formato">{formato}</span>
           <Icone id={c.icone || cat.icone} className="carta-tiragem__icone" />
           <span className="carta-tiragem__nome">{c.nome}</span>
+          {c.resumo && <span className="carta-tiragem__resumo">{c.resumo}</span>}
           <span className="carta-tiragem__preco">
             {c.valores && <span className="carta-tiragem__apartir">a partir de</span>}
             <small>R$</small>{c.preco}

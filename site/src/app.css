@@ -177,7 +177,7 @@ html { scroll-padding-top: 110px; }
   appearance: none; border: 0; margin: 0; font: inherit;
   cursor: pointer;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem;
-  padding: 1.4rem 1rem;
+  padding: 1.4rem 1rem 2.6rem;
   text-align: center;
   color: var(--pergaminho);
   background:
@@ -189,8 +189,15 @@ html { scroll-padding-top: 110px; }
 .carta-tiragem__frente { transform: rotateY(0deg); }
 .carta-tiragem__frente:focus-visible { outline: 2px solid var(--vela); outline-offset: 4px; }
 .carta-tiragem__formato { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--lavanda); }
-.carta-tiragem__icone { width: 46px; height: 46px; color: var(--vela); margin: .4rem 0 .2rem; }
+.carta-tiragem__icone { width: 42px; height: 42px; color: var(--vela); margin: .2rem 0 .1rem; }
 .carta-tiragem__nome { font-family: var(--font-display); font-weight: 600; font-size: 1.45rem; line-height: 1.1; }
+.carta-tiragem__resumo {
+  max-width: 19ch;
+  text-wrap: balance;
+  font-size: .84rem; line-height: 1.4;
+  color: var(--pergaminho-mudo);
+  margin-bottom: .3rem;
+}
 .carta-tiragem__preco {
   display: flex; align-items: flex-start; justify-content: center; flex-wrap: wrap; column-gap: .1em;
   font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; line-height: 1;

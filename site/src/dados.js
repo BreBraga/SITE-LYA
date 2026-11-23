@@ -1,72 +1,786 @@
-// Todo o conteúdo do site mora aqui. Troque os exemplos pelos dados reais da Lya.
-// ATENÇÃO: preços, promoções, cupom e depoimentos abaixo ainda são EXEMPLOS.
+// Todo o conteúdo do site mora aqui.
+// As tiragens e os valores são os reais (pasta do Drive da Lya).
 
 // Número do WhatsApp: código do país + DDD + número, só dígitos.
-export const WHATSAPP = "5500000000000";
-export const INSTAGRAM = "https://instagram.com/";
+export const WHATSAPP = "5521983140041";
+export const INSTAGRAM = "https://instagram.com/lyaprettywitchy";
 
 export const linkWhats = (mensagem) =>
   `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
 
 export const MENSAGEM_GERAL = "Olá, Lya! Vim pelo site e quero agendar uma consulta.";
 
-// Consultas, na ordem da mesa. `icone` é um id do sprite (Icones.jsx).
+// Temas das tiragens, na ordem das abas da mesa. `icone` é um id do sprite (Icones.jsx).
+export const categorias = [
+  { id: "amor", nome: "Amor", icone: "vinculo", texto: "Tiragens para entender sentimentos, relações e reencontros. Todas por R$ 23." },
+  { id: "templos", nome: "Templos", icone: "lua", texto: "Os métodos Templo. Todos por R$ 23." },
+  { id: "autoconhecimento", nome: "Autoconhecimento", icone: "olho" },
+  { id: "financeiro", nome: "Financeiro", icone: "roda" },
+  { id: "profissional", nome: "Profissional", icone: "sol" },
+  { id: "previsoes", nome: "Previsões", icone: "estrela" },
+  { id: "perguntas", nome: "Perguntas avulsas", icone: "conversa", texto: "Escolha o oráculo e quantas perguntas quer fazer. O valor muda conforme a quantidade." },
+  { id: "taytay", nome: "Taytay collection", icone: "brilho" },
+  { id: "espiritual", nome: "Espiritualidade", icone: "brilho" },
+];
+
+// Tiragens, transcritas das artes da pasta do Drive. `perguntas` são as posições
+// da tiragem; `valores` (só nas perguntas avulsas) é o preço por quantidade.
 export const consultas = [
   {
-    id: "pergunta", icone: "brilho", nome: "Pergunta única",
-    formato: "1 pergunta · até 10 min", preco: 50,
-    descricao: "Para uma dúvida pontual que precisa de resposta direta.",
+    id: "alma-gemea", categoria: "amor", nome: "Alma gêmea", preco: 23,
+    objetivo: "Uma tiragem voltada para quem deseja conhecer melhor a conexão com sua alma gêmea e compreender os caminhos que podem levar ao encontro dessa pessoa.",
+    perguntas: [
+      "Quem é sua alma gêmea?",
+      "Onde você encontrará sua alma gêmea?",
+      "O que vocês dois têm em comum?",
+      "Quais problemas precisarão superar juntos?",
+      "Que tipo de relacionamento vocês compartilharam em uma vida passada?",
+      "Como você pode aprofundar esse relacionamento?",
+    ],
   },
   {
-    id: "tres", icone: "lua", nome: "Tiragem de três", destaque: "Mais pedida",
-    formato: "3 perguntas · até 25 min", preco: 120,
-    descricao: "Passado, presente e tendência de uma situação, ou três perguntas diferentes.",
+    id: "cha-de-sumico", categoria: "amor", nome: "Chá de sumiço", preco: 23,
+    objetivo: "Uma tiragem para quem está enfrentando o afastamento ou desaparecimento de alguém importante. Busca compreender os motivos desse distanciamento e investigar os sentimentos e as possibilidades de reaproximação.",
+    perguntas: [
+      "Quais são os possíveis motivos pelos quais essa pessoa se afastou ou sumiu?",
+      "Essa pessoa ainda pensa em você?",
+      "Quais sentimentos ela tem por você?",
+      "Ela tem intenção de te procurar novamente?",
+      "Vocês ainda têm futuro juntos?",
+      "Qual é o conselho das cartas para essa situação?",
+    ],
   },
   {
-    id: "amor", icone: "vinculo", nome: "Amor e vínculos",
-    formato: "Leitura focada · 30 min", preco: 140,
-    descricao: "O que está em jogo numa relação: sentimentos, intenções e caminhos possíveis.",
+    id: "desvendando-o-outro", categoria: "amor", nome: "Desvendando o outro", preco: 23,
+    objetivo: "Uma tiragem para quem deseja conhecer melhor uma pessoa de interesse amoroso, compreender suas características, intenções e sentimentos.",
+    perguntas: [
+      "Essa pessoa é honesta?",
+      "Como ela se comporta com a própria família?",
+      "Ela tem intenções sérias com você?",
+      "Como ela se comportou em seu último relacionamento?",
+      "O que ela realmente sente por você?",
+      "Que tipo de relação vocês tendem a construir?",
+      "Qual é a maior qualidade dela como parceira?",
+      "Qual é o maior defeito dela como parceira?",
+      "Qual é o conselho das cartas para você?",
+    ],
   },
   {
-    id: "mesa", icone: "olho", nome: "Mesa aberta",
-    formato: "36 cartas · 45 min", preco: 180,
-    descricao: "Leitura completa no baralho cigano: amor, trabalho, família, saúde e o que está chegando.",
+    id: "ficar-ou-partir", categoria: "amor", nome: "Ficar ou partir?", preco: 23,
+    objetivo: "Uma tiragem para quem está em dúvida sobre continuar ou encerrar um relacionamento. Busca explorar os motivos para permanecer ou partir, compreender os possíveis impactos emocionais de cada escolha e revelar as tendências para o futuro.",
+    perguntas: [
+      "Qual é a situação atual do relacionamento?",
+      "Por que você deveria ficar?",
+      "Por que você deveria partir?",
+      "Como você se sentirá se escolher ficar?",
+      "Como você se sentirá se escolher partir?",
+      "Qual é a tendência para o futuro e o conselho das cartas?",
+    ],
   },
   {
-    id: "ano", icone: "sol", nome: "Mapa do ano 2027",
-    formato: "12 cartas · 1 h", preco: 270,
-    descricao: "Uma carta-guia para cada mês do ano, com as energias e os cuidados de cada fase.",
+    id: "luto-de-amor", categoria: "amor", nome: "Luto de amor", preco: 23,
+    objetivo: "Uma tiragem dedicada a quem está passando pelo processo de perda de alguém importante, seja por um término, afastamento. Busca compreender os sentimentos envolvidos, o significado desse vínculo e o que pode ajudar na elaboração da perda, trazendo acolhimento e direcionamento para seguir em frente.",
+    perguntas: [
+      "Como você está emocionalmente neste momento?",
+      "O que essa relação significa para você?",
+      "O que pode te ajudar a seguir em frente?",
+      "Você poderá se relacionar novamente com a pessoa que perdeu?",
+      "O que fazer diante dessa situação?",
+    ],
   },
   {
-    id: "acompanhamento", icone: "estrela", nome: "Acompanhamento",
-    formato: "3 leituras no mês", preco: 360, precoDe: 420,
-    descricao: "Para atravessar uma fase com orientação constante: uma leitura a cada dez dias.",
+    id: "o-celular-dele", categoria: "amor", nome: "O celular dele", preco: 23,
+    objetivo: "Uma tiragem para quem sente insegurança ou desconfiança em relação ao comportamento da pessoa amada com o celular. Busca explorar o que pode estar por trás dessas atitudes e trazer clareza sobre as preocupações envolvendo a relação.",
+    perguntas: [
+      "O que essa pessoa costuma fazer tanto tempo no celular?",
+      "Por que ela para o que está fazendo quando você chega?",
+      "O que ela pode estar escondendo de você?",
+      "O que você precisa saber sobre essa situação?",
+      "Com o que você pode deixar de se preocupar?",
+      "Existe possibilidade de traição envolvida nessa situação?",
+      "Qual é o conselho das cartas?",
+    ],
+  },
+  {
+    id: "procurando-o-amor", categoria: "amor", nome: "Procurando o amor", preco: 23,
+    objetivo: "Uma tiragem voltada para quem deseja encontrar um novo amor, compreender sua própria disponibilidade emocional e descobrir o que as cartas revelam sobre a chegada de um relacionamento. Busca explorar as características dessa conexão, como ela poderá surgir e seu potencial de se tornar algo duradouro.",
+    perguntas: [
+      "Você está pronto(a) para viver um relacionamento?",
+      "A pessoa que você encontrará também estará pronta para uma relação?",
+      "Como vocês irão se conhecer?",
+      "Como será esse relacionamento?",
+      "O que você ganhará com essa conexão?",
+      "O que você poderá perder?",
+      "Qual é o potencial dessa relação de se firmar?",
+      "Qual é o conselho das cartas?",
+    ],
+  },
+  {
+    id: "quero-de-volta", categoria: "amor", nome: "Quero de volta", preco: 23,
+    objetivo: "Uma tiragem voltada para quem deseja compreender melhor um término e descobrir se existe possibilidade de reconciliação. Busca revelar os motivos que levaram ao fim da relação, os sentimentos atuais da outra pessoa e as possibilidades de um retorno.",
+    perguntas: [
+      "Qual foi a verdadeira razão do término?",
+      "Como a pessoa está lidando com o fim da relação?",
+      "O que ela sente por você atualmente?",
+      "Existe possibilidade de essa pessoa voltar para você?",
+    ],
+  },
+  {
+    id: "tirada-do-ex", categoria: "amor", nome: "Tirada do ex", preco: 23,
+    objetivo: "Uma tiragem para quem deseja compreender os sentimentos e as intenções de uma pessoa do passado, investigar a possibilidade de reconciliação e revelar as tendências para o futuro.",
+    perguntas: [
+      "O que essa pessoa sente por você atualmente?",
+      "Ela tem intenções de voltar?",
+      "Ela mudou suas atitudes desde o término?",
+      "Qual é o possível futuro entre vocês?",
+      "Qual é o conselho das cartas para você?",
+    ],
+  },
+  {
+    id: "templo-da-lua", categoria: "templos", nome: "Templo da Lua", preco: 23,
+    objetivo: "O método Templo da Lua é voltado para uma mensagem da espiritualidade para você, revelando sua energia atual, o que você precisa entender e deixar ir, além de mostrar onde precisa melhorar e direcionar seu foco; também traz o conselho da espiritualidade e uma mensagem final para guiar seus próximos passos com mais clareza.",
+    perguntas: [
+      "Qual a minha energia atual?",
+      "O que eu preciso entender?",
+      "O que eu preciso deixar ir?",
+      "Onde preciso melhorar?",
+      "Onde preciso focar?",
+      "Qual é o conselho da espiritualidade?",
+      "Qual é a mensagem final?",
+      "Fundo do deck: conselho",
+    ],
+  },
+  {
+    id: "templo-das-almas", categoria: "templos", nome: "Templo das Almas", preco: 23,
+    objetivo: "O método Templo das Almas revela os sentimentos de ambas as partes e a vibração da conexão, mostrando o que une e o que bloqueia a relação; também indica se essa pessoa faz parte do seu caminho amoroso, as chances de uma união futura e traz um conselho para direcionamento.",
+    perguntas: [
+      "O que eu sinto?",
+      "O que ele(a) sente?",
+      "Qual é a vibração da nossa conexão?",
+      "O que nos une?",
+      "O que nos separa/bloqueia?",
+      "Essa pessoa está no meu caminho amoroso?",
+      "Tem possibilidade para união futura?",
+      "Conselho",
+    ],
+  },
+  {
+    id: "templo-das-estrelas", categoria: "templos", nome: "Templo das Estrelas", preco: 23,
+    objetivo: "Uma tiragem inspirada no universo e nas possibilidades do destino. Voltada para sonhos, desejos e futuro, ajuda a compreender quais caminhos estão se abrindo, quais oportunidades podem surgir e o que pode aproximar você da vida que deseja construir.",
+    perguntas: [
+      "O que minha alma mais deseja neste momento?",
+      "Qual sonho merece minha atenção?",
+      "Quais possibilidades ainda não estou enxergando?",
+      "O que pode estar me afastando dos meus sonhos?",
+      "Quais oportunidades o futuro reserva para mim?",
+      "Qual caminho pode me aproximar dos meus objetivos?",
+    ],
+  },
+  {
+    id: "templo-de-afrodite", categoria: "templos", nome: "Templo de Afrodite", preco: 23,
+    objetivo: "Uma tiragem dedicada à conexão amorosa entre duas pessoas. Analisa os sentimentos, pensamentos e intenções de ambos, permitindo compreender como cada um enxerga a relação e quais são as perspectivas para o futuro.",
+    perguntas: [
+      "Você: sentimentos e intenções em relação ao amado.",
+      "Amado: sentimentos e intenções em relação a você.",
+      "Pensamentos: o que passa pela cabeça de cada um.",
+      "Futuro da relação: quais são as perspectivas para vocês.",
+    ],
+  },
+  {
+    id: "templo-de-apolo", categoria: "templos", nome: "Templo de Apolo", preco: 23,
+    objetivo: "Uma tiragem voltada para clareza, autoconhecimento e revelação da verdade. ajuda a identificar confusões, ilusões e percepções distorcidas, mostrando o caminho mais consciente, os possíveis resultados e as raízes da situação.",
+    perguntas: [
+      "A névoa: qual é a confusão ou dificuldade presente na situação?",
+      "A luz interior: qual verdade já existe, mas pode estar sendo ignorada?",
+      "A distorção: quais ilusões ou percepções equivocadas estão influenciando a situação?",
+      "O caminho: qual é a direção mais consciente a seguir?",
+      "A iluminação: qual é o resultado provável ao compreender e aplicar essa verdade?",
+      "Fundo do baralho: qual é a origem oculta que sustenta toda essa situação?",
+    ],
+  },
+  {
+    id: "templo-de-aurora", categoria: "templos", nome: "Templo de Aurora", preco: 23,
+    objetivo: "O método Templo de Aurora revela sua energia espiritual, sua mediunidade e dons naturais, mostrando como a espiritualidade se manifesta, o que precisa desenvolver e como iniciar esse caminho, finalizando com um conselho para orientação.",
+    perguntas: [
+      "Qual é a energia espiritual atual?",
+      "Qual tipo de mediunidade é predominante?",
+      "Quais são os meus dons naturais?",
+      "Como a espiritualidade se manifesta?",
+      "Quais são as interferências espirituais?",
+      "O que precisa desenvolver?",
+      "Como começar a trabalhar essa mediunidade?",
+      "Conselho da espiritualidade",
+    ],
+  },
+  {
+    id: "templo-de-hecate", categoria: "templos", nome: "Templo de Hécate", preco: 23,
+    objetivo: "O Templo de Hécate é indicado para momentos de decisão, confusão e transição. Revela o caminho atual, os bloqueios ocultos, as influências externas e as consequências de cada escolha possível. Ajudando a compreender o que precisa ser encerrado e o que pode ser iniciado, trazendo clareza e direção.",
+    perguntas: [
+      "Qual é o meu caminho atual?",
+      "O que está oculto e eu ainda não percebo?",
+      "Qual é o principal bloqueio nesse momento?",
+      "Que influência interfere nessa decisão?",
+      "Qual é o ponto-chave que define essa escolha?",
+      "Se eu seguir o caminho A?",
+      "Se eu seguir o caminho B?",
+      "O que cada caminho vai exigir de mim?",
+      "Qual é o conselho final para atravessar essa fase com segurança?",
+    ],
+  },
+  {
+    id: "templo-de-persefone", categoria: "templos", nome: "Templo de Perséfone", preco: 23,
+    objetivo: "Uma leitura sobre transformação pessoal, amadurecimento e retomada do próprio poder. ajuda a reconhecer o que precisa ser aceito, como transformar desafios em aprendizado, o que deixar para trás e como aproveitar melhor a fase atual da sua vida.",
+    perguntas: [
+      "O que devo reconhecer que não posso mudar em minha vida??",
+      "Como posso retomar meu poder em minha vida novamente??",
+      "Como posso usar os desafios da minha vida a meu favor??",
+      "O que devo abrir mão para ganhar algo em troca??",
+      "Como posso aproveitar ao máximo o que está acontecendo na minha vida??",
+      "CONSELHO",
+    ],
+  },
+  {
+    id: "templo-de-venus", categoria: "templos", nome: "Templo de Vênus", preco: 23,
+    objetivo: "O método Templo de Vênus revela a ligação espiritual entre duas pessoas, o que foi quebrado e o que ainda mantém o vínculo, além de mostrar o karma da relação, a energia de cada um, os obstáculos, o caminho para reconciliação e a tendência final desse laço.",
+    perguntas: [
+      "Qual é a ligação espiritual?",
+      "O que foi quebrado nessa ligação?",
+      "O que conecta essa ligação?",
+      "Qual é o karma dessa relação?",
+      "Qual é a energia da pessoa?",
+      "Qual é a energia do(a) consulente?",
+      "Qual é o caminho para se reconciliar?",
+      "Qual é o obstáculo?",
+      "Qual é o resultado final?",
+    ],
+  },
+  {
+    id: "templo-do-cupido", categoria: "templos", nome: "Templo do Cupido", preco: 23,
+    objetivo: "Uma tiragem voltada para relacionamentos e possibilidades amorosas. Ajuda a compreender o que cada pessoa oferece à relação, o potencial de felicidade entre vocês e as perspectivas de continuidade desse relacionamento.",
+    perguntas: [
+      "O que contribuo para a nova relação?",
+      "O que a outra pessoa acrescenta ao namoro?",
+      "Encontrarei a felicidade nessa parceria?",
+      "A outra pessoa será feliz ao meu lado?",
+      "Esse namoro durará?",
+    ],
+  },
+  {
+    id: "templo-do-espelho", categoria: "templos", nome: "Templo do Espelho", preco: 23,
+    objetivo: "Uma tiragem para revelar o que está por trás de uma situação. Investiga verdades escondidas, intenções reais, pessoas ou fatores envolvidos e possíveis riscos, trazendo também direcionamento sobre como agir diante das circunstâncias.",
+    perguntas: [
+      "Qual é a verdade da situação?",
+      "O que está sendo escondido?",
+      "Qual é a intenção real?",
+      "Quem ou o que está envolvido?",
+      "Qual é o risco ou perigo?",
+      "O que devo fazer?",
+      "Qual é o conselho?",
+    ],
+  },
+  {
+    id: "templo-do-sol", categoria: "templos", nome: "Templo do Sol", preco: 23,
+    objetivo: "Uma tiragem inspirada na energia solar, voltada para autoconhecimento, clareza e realização pessoal. Ajuda a reconhecer seu potencial, identificar bloqueios e compreender quais caminhos podem favorecer seu crescimento e suas conquistas.",
+    perguntas: [
+      "Como está minha energia atualmente?",
+      "Qual é o meu maior potencial neste momento?",
+      "O que preciso enxergar com mais clareza?",
+      "O que está impedindo meu crescimento?",
+      "Quais oportunidades estão surgindo no meu caminho?",
+      "Qual é o meu caminho para a realização pessoal?",
+    ],
+  },
+  {
+    id: "templo-de-eros", categoria: "templos", nome: "Templo de Eros", preco: 23,
+    objetivo: "Uma tiragem voltada para a atração e a intimidade entre duas pessoas. revela como alguém te enxerga, o que desperta seu desejo, as expectativas na vida sexual, a química entre vocês e os possíveis caminhos dessa conexão.",
+    perguntas: [
+      "Como a pessoa me vê?",
+      "Como ela se sente atraída por mim?",
+      "O que ela espera de mim na cama?",
+      "Como ela transa?",
+      "O que posso fazer para trazer mais prazer?",
+      "Qual será a nossa química?",
+      "O que nos favorece?",
+      "O que nos atrapalha?",
+      "Qual é o futuro dessa relação sexual?",
+    ],
+  },
+  {
+    id: "aniversario", categoria: "autoconhecimento", nome: "Aniversário", preco: 40,
+    objetivo: "Uma tiragem especial para o início de um novo ciclo pessoal, buscando revelar as tendências, oportunidades, desafios e possíveis transformações do ano que se inicia. Ideal para refletir sobre prioridades e receber direcionamentos para aproveitar melhor esse novo período.",
+    perguntas: [
+      "O que este ano que se inicia trará para mim?",
+      "Qual será o principal obstáculo deste novo ano?",
+      "Qual será a minha principal conquista neste novo ano?",
+      "Qual setor da minha vida merece mais atenção neste ano?",
+      "Haverá alguma mudança significativa neste novo ano?",
+      "Qual é o conselho das cartas para este novo ciclo?",
+    ],
+  },
+  {
+    id: "aparencia", categoria: "autoconhecimento", nome: "Aparência", preco: 25,
+    objetivo: "Uma tiragem voltada para compreender a imagem que o consulente transmite, como percebe a própria aparência e quais características podem se destacar aos olhos dos outros. Busca promover uma visão mais consciente e positiva da própria imagem.",
+    perguntas: [
+      "Qual é a primeira impressão que você transmite?",
+      "Como é a sua aparência aos olhos dos outros?",
+      "Como você enxerga a própria aparência?",
+      "Qual é o conselho das cartas para valorizar sua aparência?",
+    ],
+  },
+  {
+    id: "aprendizado", categoria: "autoconhecimento", nome: "Aprendizado", preco: 25,
+    objetivo: "Uma tiragem voltada para compreender os principais aprendizados que a vida está trazendo ao consulente em diferentes áreas. Busca revelar lições importantes, desafios de crescimento e oportunidades de evolução pessoal.",
+    perguntas: [
+      "O que preciso saber sobre a vida?",
+      "O que preciso saber sobre a minha vocação?",
+      "O que preciso saber sobre o amor?",
+    ],
+  },
+  {
+    id: "autoconfianca", categoria: "autoconhecimento", nome: "Autoconfiança", preco: 25,
+    objetivo: "Uma tiragem voltada para quem deseja compreender melhor suas inseguranças, reconhecer suas qualidades e fortalecer a confiança em si mesmo. Busca identificar padrões emocionais, valorizar características pessoais e revelar caminhos para desenvolver uma relação mais positiva consigo.",
+    perguntas: [
+      "Como as suas inseguranças se manifestam?",
+      "Como você tentou se curar no passado?",
+      "Em quais áreas da vida você deveria ter mais confiança?",
+      "O que os outros admiram em você?",
+      "Como você pode construir mais autoconfiança?",
+      "Qual é o conselho das cartas?",
+    ],
+  },
+  {
+    id: "autoconhecimento", categoria: "autoconhecimento", nome: "Autoconhecimento", preco: 40,
+    objetivo: "Uma tiragem voltada para a exploração da identidade pessoal, buscando compreender quem o consulente é neste momento, reconhecer seus talentos, identificar obstáculos internos e revelar aspectos importantes de sua jornada de crescimento e realização pessoal.",
+    perguntas: [
+      "Quem sou eu agora?",
+      "O que me incomoda?",
+      "O que eu gosto em mim?",
+      "O que eu não gosto em mim?",
+      "Qual é o meu talento?",
+      "Qual é o meu obstáculo?",
+      "Qual é a minha busca pessoal?",
+    ],
+  },
+  {
+    id: "deixar-o-passado-pra-tras", categoria: "autoconhecimento", nome: "Deixar o passado pra trás", preco: 25,
+    objetivo: "Uma tiragem para quem deseja se libertar de situações, sentimentos ou padrões do passado que ainda influenciam o presente. Busca compreender o que precisa ser encerrado, identificar os obstáculos para seguir em frente e reconhecer as influências que podem favorecer um novo ciclo.",
+    perguntas: [
+      "O que você precisa deixar para trás?",
+      "O que está impedindo você de seguir em frente?",
+      "Como você pode seguir em frente?",
+      "Quais influências futuras você deve evitar?",
+      "Quais influências futuras você deve aceitar?",
+      "Qual é o conselho das cartas para esse novo ciclo?",
+    ],
+  },
+  {
+    id: "destino-divino", categoria: "autoconhecimento", nome: "Destino divino", preco: 60,
+    objetivo: "Uma tiragem espiritual voltada para compreender a missão de vida e o caminho de evolução do consulente. Busca explorar seu alinhamento atual com esse propósito, identificar crenças limitantes e receber direcionamentos simbólicos relacionados à própria espiritualidade, ao Eu Superior e aos ancestrais.",
+    perguntas: [
+      "Qual carta representa o meu destino divino?",
+      "Qual carta revela o meu alinhamento atual com esse destino?",
+      "Como devo servir a mim mesmo e aos outros por meio da minha missão?",
+      "Quais crenças limitantes estão me impedindo de seguir esse caminho?",
+      "Quais são os conselhos do meu Eu Superior?",
+      "Quais são os conselhos dos meus Guias Espirituais?",
+      "Quais são os conselhos dos meus Ancestrais?",
+    ],
+  },
+  {
+    id: "espelho-da-alma", categoria: "autoconhecimento", nome: "Espelho da alma", preco: 30,
+    objetivo: "Uma tiragem de autoconhecimento voltada para compreender a própria essência, reconhecer qualidades e identificar aspectos pessoais que precisam de atenção. Busca promover uma conexão mais profunda consigo mesmo e revelar caminhos para fortalecer a autoconfiança e desenvolver o próprio potencial.",
+    perguntas: [
+      "O que você precisa compreender sobre si neste momento?",
+      "Quais são as suas maiores qualidades?",
+      "Quais pontos pessoais você precisa melhorar?",
+      "Como você pode fortalecer sua autoconfiança?",
+      "Como você pode se alinhar com o seu potencial máximo?",
+    ],
+  },
+  {
+    id: "leitura-completa", categoria: "autoconhecimento", nome: "Leitura completa", preco: 80,
+    objetivo: "Uma tiragem abrangente que busca oferecer uma visão geral dos principais setores da vida do consulente, identificando energias, desafios, oportunidades e possíveis caminhos. Ideal para quem deseja compreender melhor o momento atual e receber direcionamentos para diferentes áreas da vida.",
+    perguntas: [
+      "Como está o seu campo pessoal?",
+      "Como está o seu campo profissional?",
+      "Como está o seu campo financeiro?",
+      "Como está a sua vida amorosa?",
+      "Como está a sua relação com a família?",
+      "Como está o seu campo espiritual?",
+      "Como está o seu campo social?",
+      "Qual é o seu bloqueio geral neste momento?",
+      "Qual é o conselho geral das cartas?",
+    ],
+  },
+  {
+    id: "mandala", categoria: "autoconhecimento", nome: "Mandala", preco: 60,
+    rotulo: "Ver as 12 áreas",
+    formato: "12 áreas da vida",
+    objetivo: "Uma tiragem abrangente que busca oferecer uma visão das principais áreas da vida do consulente ao longo de um ciclo. Por meio de diferentes setores, permite compreender tendências, desafios e oportunidades, trazendo uma perspectiva geral sobre o momento vivido.",
+    perguntas: [
+      "Personalidade",
+      "Dinheiro e ganhos",
+      "Comunicação",
+      "Passado",
+      "Amor e relacionamento",
+      "Profissional e carreira",
+      "Relações familiares",
+      "Sexo e vida a dois",
+      "Estudos",
+      "Viagens",
+      "Amizades e vida social",
+      "Religião e provações",
+    ],
+  },
+  {
+    id: "mensagem-do-seu-futuro", categoria: "autoconhecimento", nome: "Mensagem do seu futuro", preco: 35,
+    objetivo: "Uma tiragem reflexiva que busca oferecer direcionamentos para o futuro do consulente, ajudando a reconhecer seu potencial, compreender o que precisa ser transformado e identificar onde deve concentrar sua energia para construir o caminho desejado.",
+    perguntas: [
+      "O que você precisa lembrar?",
+      "O que você precisa deixar ir?",
+      "Qual é o seu maior potencial?",
+      "A que você deveria dedicar mais tempo?",
+      "A que você deveria dedicar menos tempo?",
+      "Qual é a mensagem do seu futuro para você?",
+    ],
+  },
+  {
+    id: "chave-da-prosperidade", categoria: "financeiro", nome: "Chave da prosperidade", preco: 27,
+    objetivo: "Identificar bloqueios financeiros e compreender o que pode ser transformado para favorecer a prosperidade.",
+    perguntas: [
+      "Como está minha situação financeira atual?",
+      "Quais são as principais causas dos meus bloqueios financeiros?",
+      "Quais padrões preciso transformar em relação ao dinheiro?",
+      "Quais oportunidades de prosperidade ainda não percebi?",
+      "Como posso abrir caminhos para o crescimento financeiro?",
+      "Qual conselho devo seguir para alcançar maior prosperidade?",
+    ],
+  },
+  {
+    id: "imperio-financeiro", categoria: "financeiro", nome: "Império financeiro", preco: 45,
+    objetivo: "Realizar uma análise aprofundada da vida financeira, explorando caminhos para construir estabilidade, prosperidade e independência financeira.",
+    perguntas: [
+      "Como está minha situação financeira atualmente?",
+      "Quais são minhas principais dificuldades materiais?",
+      "Qual é meu potencial de prosperidade?",
+      "Quais talentos meus podem gerar novas fontes de renda?",
+      "Quais oportunidades profissionais e financeiras podem surgir?",
+      "Como posso aumentar meus ganhos?",
+      "Quais obstáculos podem dificultar minha estabilidade?",
+      "Qual é a tendência para minha vida financeira?",
+      "Quais são as possibilidades de conquistar minha independência financeira?",
+      "Qual conselho devo seguir para construir minha riqueza e estabilidade?",
+    ],
+  },
+  {
+    id: "portal-da-abundancia", categoria: "financeiro", nome: "Portal da abundância", preco: 30,
+    objetivo: "Explorar oportunidades de expansão financeira e identificar caminhos para atrair abundância.",
+    perguntas: [
+      "Como está minha energia de prosperidade?",
+      "Como minha relação com o dinheiro influencia minha vida financeira?",
+      "Quais oportunidades de ganhos podem surgir?",
+      "O que está bloqueando minha abundância?",
+      "Qual é meu potencial de crescimento financeiro?",
+      "Qual é a tendência para minha vida financeira?",
+      "O que devo fazer para favorecer minha prosperidade?",
+    ],
+  },
+  {
+    id: "portal-da-prosperidade", categoria: "financeiro", nome: "Portal da prosperidade", preco: 23,
+    objetivo: "Compreender as energias que envolvem sua vida profissional e financeira, identificar bloqueios e descobrir caminhos para atrair prosperidade, estabilidade e abundância.",
+    perguntas: [
+      "Quais energias estão atuando no meu campo profissional?",
+      "Quais crenças e bloqueios eu carrego em relação ao dinheiro?",
+      "Quais oportunidades estão disponíveis para mim neste momento?",
+      "Como posso alcançar maior estabilidade financeira?",
+      "Como posso atrair mais prosperidade e abundância para minha vida?",
+    ],
+  },
+  {
+    id: "prosperidade-em-movimento", categoria: "financeiro", nome: "Prosperidade em movimento", preco: 23,
+    objetivo: "Compreender o momento financeiro atual e identificar caminhos para melhorar a relação com o dinheiro.",
+    perguntas: [
+      "Como está minha energia financeira atualmente?",
+      "O que favorece minha prosperidade?",
+      "Quais bloqueios estão dificultando meu crescimento financeiro?",
+      "Quais oportunidades de ganhos podem surgir?",
+      "O que devo fazer para melhorar minha vida financeira?",
+    ],
+  },
+  {
+    id: "roda-da-fortuna", categoria: "financeiro", nome: "Roda da fortuna", preco: 35,
+    objetivo: "Analisar os movimentos financeiros dos próximos meses, identificando tendências, oportunidades e desafios.",
+    perguntas: [
+      "Como está minha situação financeira atual?",
+      "Como tendem a se comportar minhas entradas e saídas financeiras?",
+      "Quais oportunidades inesperadas podem surgir?",
+      "Quais desafios materiais posso enfrentar?",
+      "Existem possibilidades de expansão financeira?",
+      "Como posso conquistar maior estabilidade?",
+      "Qual é a tendência financeira para os próximos meses?",
+      "Qual conselho devo seguir para melhorar minha vida financeira?",
+    ],
+  },
+  {
+    id: "a-vaga-e-minha", categoria: "profissional", nome: "A vaga é minha?", preco: 27,
+    objetivo: "Analisar a energia de um processo seletivo específico e compreender as possibilidades de conquistar a vaga desejada.",
+    perguntas: [
+      "Como está a energia desse processo seletivo?",
+      "Como minha candidatura se apresenta?",
+      "Quais são meus pontos fortes nessa seleção?",
+      "Quais obstáculos ou concorrências podem surgir?",
+      "Qual é a tendência do resultado desse processo?",
+      "O que posso fazer para favorecer essa oportunidade?",
+    ],
+  },
+  {
+    id: "ascensao-profissional", categoria: "profissional", nome: "Ascensão profissional", preco: 40,
+    objetivo: "Analisar possibilidades de mudança, crescimento e evolução significativa na vida profissional.",
+    perguntas: [
+      "Como está minha situação profissional atualmente?",
+      "O que está causando insatisfação na minha carreira?",
+      "Qual é meu potencial de crescimento?",
+      "Quais oportunidades de mudança podem surgir?",
+      "Quais desafios posso enfrentar nessa transição?",
+      "Uma mudança profissional tende a ser favorável?",
+      "Como posso conquistar maior reconhecimento?",
+      "Qual é a tendência da minha carreira nos próximos meses?",
+      "O que devo fazer para alcançar minha ascensão profissional?",
+    ],
+  },
+  {
+    id: "caminhos-da-carreira", categoria: "profissional", nome: "Caminhos da carreira", preco: 23,
+    objetivo: "Compreender o momento profissional atual, identificar talentos e descobrir caminhos para evolução na carreira.",
+    perguntas: [
+      "Qual é a energia atual da minha vida profissional?",
+      "Quais são meus principais talentos e habilidades?",
+      "Quais desafios estão dificultando meu crescimento?",
+      "Quais oportunidades podem surgir para mim?",
+      "O que devo fazer para evoluir profissionalmente?",
+    ],
+  },
+  {
+    id: "carreira", categoria: "profissional", nome: "Carreira", preco: 23,
+    objetivo: "Analisar sua trajetória profissional, compreender seu momento atual e identificar o que pode ser feito para alcançar crescimento e realização na carreira.",
+    perguntas: [
+      "Como está minha situação profissional atualmente?",
+      "O que preciso fazer para progredir na minha carreira?",
+      "Quais desafios ou obstáculos posso enfrentar pelo caminho?",
+      "Quais oportunidades profissionais podem surgir para mim?",
+      "Qual é a tendência para meu futuro profissional?",
+    ],
+  },
+  {
+    id: "destino-profissional", categoria: "profissional", nome: "Destino profissional", preco: 35,
+    objetivo: "Explorar caminhos profissionais, compreender o propósito e identificar possibilidades de realização na carreira.",
+    perguntas: [
+      "Qual é meu propósito profissional neste momento?",
+      "O caminho em que estou atualmente é favorável?",
+      "Quais outros caminhos profissionais posso explorar?",
+      "Quais oportunidades podem surgir?",
+      "Quais desafios encontrarei nessa jornada?",
+      "Como posso alcançar maior realização profissional?",
+      "Qual é a tendência para minha carreira nos próximos meses?",
+      "Qual conselho devo seguir para construir meu futuro profissional?",
+    ],
+  },
+  {
+    id: "portal-do-sucesso", categoria: "profissional", nome: "Portal do sucesso", preco: 30,
+    objetivo: "Identificar oportunidades de crescimento, reconhecimento e desenvolvimento profissional.",
+    perguntas: [
+      "Como está meu momento profissional atual?",
+      "Quais oportunidades podem favorecer meu crescimento?",
+      "O que está bloqueando meu reconhecimento?",
+      "Como posso me destacar profissionalmente?",
+      "Quais caminhos podem me levar ao sucesso?",
+      "Qual é a tendência para minha carreira?",
+      "Qual conselho devo seguir para alcançar meus objetivos?",
+    ],
+  },
+  {
+    id: "previsao-anual", categoria: "previsoes", nome: "Previsão anual", preco: 100,
+    objetivo: "Uma leitura completa sobre as tendências dos próximos 12 meses, explorando os principais acontecimentos, oportunidades, desafios e transformações de cada período. É uma tiragem mais extensa, que permite observar os caminhos que podem se apresentar ao longo do ano em diferentes áreas da vida.",
+    perguntas: [],
+  },
+  {
+    id: "previsao-mensal", categoria: "previsoes", nome: "Previsão mensal", preco: 45,
+    objetivo: "Uma leitura mais aprofundada sobre as tendências do mês, explorando os principais acontecimentos, oportunidades, desafios e mudanças que podem surgir. Abrange diferentes áreas da vida, permitindo uma visão geral do que esperar ao longo dos próximos 30 dias.",
+    perguntas: [],
+  },
+  {
+    id: "previsao-semanal", categoria: "previsoes", nome: "Previsão semanal", preco: 25,
+    objetivo: "Uma leitura voltada para os próximos sete dias, trazendo as principais tendências da semana, possíveis acontecimentos, vida amorosa, financeira, profissional e emocional. Também apresenta orientações e pontos de atenção para o período.",
+    perguntas: [],
+  },
+  {
+    id: "baralho-cigano", categoria: "perguntas", nome: "Baralho cigano", preco: 5,
+    valores: [{ perguntas: 1, preco: 5 }, { perguntas: 3, preco: 13 }, { perguntas: 5, preco: 20 }, { perguntas: 7, preco: 27 }],
+    formato: "Perguntas avulsas",
+    objetivo: "O Baralho Cigano é um oráculo conhecido por sua linguagem objetiva e direta. Suas cartas trazem respostas sobre situações cotidianas, relacionamentos, trabalho, vida financeira e acontecimentos ao redor do consulente.\nÉ indicado para quem procura respostas mais práticas, esclarecimentos sobre situações específicas e uma visão direta sobre os caminhos que estão se apresentando.",
+    perguntas: [],
+  },
+  {
+    id: "sibila-italiana", categoria: "perguntas", nome: "Sibila italiana", preco: 9,
+    valores: [{ perguntas: 1, preco: 9 }, { perguntas: 3, preco: 24 }, { perguntas: 5, preco: 38 }, { perguntas: 7, preco: 52 }],
+    formato: "Perguntas avulsas",
+    objetivo: "A Sibila Italiana é um oráculo tradicional conhecido pela riqueza de detalhes e pela abordagem bastante específica de suas cartas. Suas mensagens exploram comportamentos, pensamentos, intenções, acontecimentos e situações que envolvem o consulente.\nÉ indicada para quem deseja investigar uma situação com mais profundidade, compreender atitudes, esclarecer dúvidas sobre relacionamentos e explorar detalhes que nem sempre estão evidentes.",
+    perguntas: [],
+  },
+  {
+    id: "tarot", categoria: "perguntas", nome: "Tarot", preco: 7,
+    valores: [{ perguntas: 1, preco: 7 }, { perguntas: 3, preco: 18 }, { perguntas: 5, preco: 28 }, { perguntas: 7, preco: 38 }],
+    formato: "Perguntas avulsas",
+    objetivo: "O Tarot é um oráculo voltado para o autoconhecimento, sentimentos, intenções e possibilidades. Suas cartas permitem uma leitura mais profunda das situações, trazendo aspectos emocionais, comportamentais e energéticos envolvidos em cada questão.\nÉ indicado para quem busca compreender melhor uma situação, os sentimentos de alguém, os caminhos possíveis e aquilo que pode estar por trás de determinadas atitudes.",
+    perguntas: [],
+  },
+  {
+    id: "all-too-well", categoria: "taytay", nome: "All Too Well", preco: 25,
+    objetivo: "Para compreender uma história marcante, revisitar os sentimentos envolvidos e descobrir o que ainda permanece dessa conexão, mesmo depois do fim.",
+    perguntas: [
+      "O que essa relação representou para essa pessoa?",
+      "Qual lembrança mais marcou essa conexão?",
+      "O que ela sente atualmente por você?",
+      "Existe saudade?",
+      "Existe arrependimento?",
+      "O que ainda mantém essa conexão presente?",
+      "Qual é a tendência dessa história daqui para frente?",
+    ],
+  },
+  {
+    id: "august", categoria: "taytay", nome: "August", preco: 23,
+    objetivo: "Para entender relações indefinidas, sentimentos que talvez não sejam correspondidos e expectativas diferentes dentro de uma conexão.",
+    perguntas: [
+      "Como essa pessoa enxerga a relação de vocês?",
+      "O que ela sente por você?",
+      "O que ela espera dessa conexão?",
+      "Por que essa relação não se desenvolve como você espera?",
+      "Existe possibilidade de reciprocidade?",
+      "Qual é a tendência futura entre vocês?",
+    ],
+  },
+  {
+    id: "clean", categoria: "taytay", nome: "Clean", preco: 25,
+    objetivo: "Para quem deseja encerrar ciclos, compreender o que ainda machuca, superar situações passadas e descobrir quais possibilidades estão surgindo depois de uma transformação.",
+    perguntas: [
+      "O que você precisa deixar para trás?",
+      "O que ainda te prende ao passado?",
+      "Qual aprendizado essa situação trouxe para sua vida?",
+      "O que você precisa transformar em si mesma?",
+      "Quais novas possibilidades estão surgindo no seu caminho?",
+      "Como tende a ser seu processo de renovação?",
+      "Qual conselho o tarot oferece para esse novo ciclo?",
+    ],
+  },
+  {
+    id: "delicate", categoria: "taytay", nome: "Delicate", preco: 25,
+    objetivo: "Para descobrir os pensamentos, sentimentos e intenções de alguém em relação a você, inclusive aquilo que essa pessoa não consegue demonstrar.",
+    perguntas: [
+      "O que essa pessoa pensa sobre você?",
+      "Quais sentimentos ela possui por você?",
+      "O que ela deseja viver com você?",
+      "Quais são os medos ou inseguranças dela nessa conexão?",
+      "O que ela não demonstra ou não consegue expressar?",
+      "Quais são as verdadeiras intenções dela?",
+      "Qual será a tendência de atitude dessa pessoa em relação a você?",
+    ],
+  },
+  {
+    id: "enchanted", categoria: "taytay", nome: "Enchanted", preco: 23,
+    objetivo: "Para descobrir como alguém te enxergou desde o primeiro encontro, se existe atração, interesse e vontade de construir uma aproximação.",
+    perguntas: [
+      "Qual foi a primeira impressão que essa pessoa teve de você?",
+      "O que mais chamou a atenção dela em você?",
+      "Existe atração ou interesse romântico?",
+      "O que essa pessoa pensa quando está perto de você?",
+      "Existe vontade de se aproximar?",
+      "Quais são as possibilidades dessa conexão?",
+    ],
+  },
+  {
+    id: "mastermind", categoria: "taytay", nome: "Mastermind", preco: 23,
+    objetivo: "Para descobrir o que alguém demonstra, o que realmente pensa, quais são suas intenções e se existe algo que essa pessoa prefere manter em segredo.",
+    perguntas: [
+      "O que essa pessoa demonstra para você?",
+      "O que ela realmente pensa sobre você?",
+      "Quais são as intenções dela em relação a você?",
+      "Existe algo que ela está escondendo de você?",
+      "O que ela pretende fazer em relação a você?",
+      "O que você precisa compreender sobre essa pessoa?",
+    ],
+  },
+  {
+    id: "midnight-rain", categoria: "taytay", nome: "Midnight Rain", preco: 28,
+    objetivo: "Para quem vive uma história que ficou no passado, mas ainda deseja entender se existem sentimentos, saudade, arrependimento ou possibilidades de reconciliação.",
+    perguntas: [
+      "Como essa pessoa enxerga a história que viveu com você?",
+      "Quais sentimentos ainda permanecem?",
+      "Do que ela sente falta?",
+      "Existe algum arrependimento relacionado ao passado?",
+      "O que motivou o afastamento ou impediu a continuidade?",
+      "Essa pessoa ainda pensa em retomar o contato?",
+      "Existe possibilidade de reconciliação?",
+      "Qual é a tendência futura dessa conexão?",
+    ],
+  },
+  {
+    id: "the-prophecy", categoria: "taytay", nome: "The Prophecy", preco: 30,
+    objetivo: "Para investigar sua vida amorosa, descobrir quais oportunidades estão chegando, quais padrões precisam ser observados e o que o futuro pode reservar para seus relacionamentos.",
+    perguntas: [
+      "Como está sua vida amorosa atualmente?",
+      "O que está impedindo seu desenvolvimento amoroso?",
+      "Qual padrão afetivo você precisa observar?",
+      "O que do seu passado ainda influencia seu presente?",
+      "Quais oportunidades amorosas podem surgir?",
+      "Existe possibilidade de conhecer alguém especial?",
+      "Como tende a ser sua próxima experiência amorosa?",
+      "Quais acontecimentos podem marcar seu futuro afetivo?",
+      "Qual conselho o tarot oferece para sua vida amorosa?",
+    ],
+  },
+  {
+    id: "vida-passada", categoria: "espiritual", nome: "Vida passada", preco: 80,
+    objetivo: "Uma tiragem espiritual e reflexiva que busca explorar simbolicamente experiências de uma possível vida passada, compreendendo características, relações e aprendizados que podem estar relacionados à jornada atual do consulente.",
+    perguntas: [
+      "Como foram os primeiros anos de vida?",
+      "Como foi a sua educação?",
+      "Como era a sua relação com a mãe?",
+      "Como era a sua relação com o pai?",
+      "Qual era a sua posição social e hierarquia?",
+      "Como foi a sua adolescência?",
+      "Qual era a sua profissão?",
+      "Como era o seu relacionamento conjugal?",
+      "Como era a sua relação com os filhos?",
+      "Como eram as suas amizades?",
+      "Como ocorreu a sua morte física?",
+      "Qual foi a principal lição aprendida naquela vida?",
+      "Qual característica daquela vida você tem em comum com a vida atual?",
+      "Qual é o impacto simbólico daquela vida na sua vida atual?",
+    ],
+  },
+  {
+    id: "pedido-de-vela", categoria: "espiritual", nome: "Pedido de vela", preco: 50,
+    objetivo: "Um trabalho individual realizado através da consagração e acendimento de uma vela com uma intenção específica. O pedido é direcionado àquilo que você deseja movimentar, fortalecer ou atrair, podendo envolver amor, prosperidade, abertura de caminhos, proteção, harmonia e outras intenções.\nA consulente poderá enviar seu pedido com a intenção desejada, nome completo e demais informações necessárias para a realização do trabalho.",
+    perguntas: [],
   },
 ];
 
 // Painel "O que te traz aqui hoje?": cada opção aponta para uma consulta.
 export const intencoes = [
-  { consulta: "pergunta", icone: "brilho", titulo: "Uma dúvida pontual", frase: "Preciso de uma resposta direta" },
-  { consulta: "amor", icone: "vinculo", titulo: "O coração em dúvida", frase: "Quero entender uma relação" },
-  { consulta: "acompanhamento", icone: "estrela", titulo: "Uma fase difícil", frase: "Quero acompanhamento de perto" },
+  { consulta: "tarot", icone: "brilho", titulo: "Uma dúvida pontual", frase: "Preciso de uma resposta direta" },
+  { consulta: "desvendando-o-outro", icone: "vinculo", titulo: "O coração em dúvida", frase: "Quero entender uma relação" },
+  { consulta: "previsao-mensal", icone: "estrela", titulo: "O que vem por aí", frase: "Quero saber o que me espera" },
 ];
 
-// A carta do mês. `fim` no formato AAAA-MM-DD.
-export const promocaoDoMes = {
-  mes: "Novembro",
-  consulta: "tres",
-  nome: "Tiragem de três",
-  precoDe: 120,
-  preco: 89,
-  fim: "2026-11-30",
-  texto: "Três perguntas sobre o mesmo assunto ou sobre assuntos diferentes, com até 25 minutos de leitura em áudio.",
-};
+// Promoção do mês (carta que vira) e promoções da lista. Enquanto estiverem vazias,
+// a seção de promoções some do site, junto com o link do menu e o botão do topo.
+// Exemplo de promoção do mês:
+// { mes: "Dezembro", nome: "Alma gêmea", precoDe: 23, preco: 19, fim: "2026-12-31", texto: "..." }
+export const promocaoDoMes = null;
 
-export const promocoes = [
-  { icone: "brilho", titulo: "Primeira leitura", texto: "10% de desconto em qualquer consulta. Use o cupom {cupom} ao agendar.", cupom: "PRIMEIRALUA" },
-  { icone: "vinculo", titulo: "Leve uma amiga", texto: "Duas consultas de Pergunta única por R$ 80, uma para você e outra para quem você indicar." },
-  { icone: "sol", titulo: "Vale-presente", texto: "Qualquer consulta pode virar presente. A pessoa recebe um cartão digital e agenda quando quiser." },
-];
+// Exemplo: { icone: "brilho", titulo: "Primeira leitura", texto: "Use o cupom {cupom} ao agendar.", cupom: "LUA10" }
+export const promocoes = [];
+
+export const temPromocoes = Boolean(promocaoDoMes) || promocoes.length > 0;
 
 export const passos = [
   { titulo: "Escolha a consulta", texto: "Veja as leituras e clique em “Agendar” na que fizer sentido para você." },
@@ -74,11 +788,42 @@ export const passos = [
   { titulo: "Receba a leitura", texto: "No dia marcado, a leitura chega em áudio. Ouça ao vivo ou quando puder, com calma." },
 ];
 
-// EXEMPLOS: substituir por depoimentos reais, com autorização das clientes.
+// Depoimentos reais, transcritos dos prints da pasta "Feedbacks" do Drive, sem nomes.
+// Os seis primeiros aparecem logo de cara; os outros, no "Ver mais depoimentos".
+// `tiragem` (opcional) aparece na legenda: { texto: "...", tiragem: "Alma gêmea" }
 export const depoimentos = [
-  { texto: "Saí da leitura com a cabeça no lugar. Ela foi clara sem ser dura, e explicou cada carta.", autora: "Nome da cliente", consulta: "Tiragem de três" },
-  { texto: "O áudio chegou certinho no horário. Ouvi duas vezes e anotei tudo. Já agendei o mapa do ano.", autora: "Nome da cliente", consulta: "Mesa aberta" },
-  { texto: "Fiz o acompanhamento durante uma mudança de emprego e me senti amparada o mês inteiro.", autora: "Nome da cliente", consulta: "Acompanhamento" },
+  { texto: "Queria te agradecer de coração pela leitura que você fez pra mim. Você explicou tudo de uma forma super clara e acolhedora, deu pra sentir o cuidado e a atenção em cada detalhe 🥹🥹 Obrigada mesmo por ter tirado um tempinho pra me orientar, eu gostei muito! 🫶🏻" },
+  { texto: "Eu to chocada, fez 100% de sentido e você foi certeira em cada ponto. sem duvidas uma das melhores leituras que eu já fiz com alguém, você explica muito bemm" },
+  { texto: "Muito obrigada pela sua leitura, de verdade, estava precisando ouvir essa leitura, estava sentindo de fazer essa questão e por fim a solicitei. me senti muito tranquila enquanto fui ouvindo o audio e de certa forma, acalmou a minha ansiedade, mas isso somente foi possivel, porque voce foi muito carinhosa e acolhedora, portanto, muito obrigada por isso tambem." },
+  { texto: "obrigada amiga, eu gosto muuito do jeito que você explica a leitura e sempre quis te dizer isso. mesmo mudando a forma de dizer agora, continua sendo muito bem explicado e eu também gosto muito que você sempre toma muito cuidado com as palavras. desde quando eu comecei a fazer tiragens com você e fazia as perguntas estando apreensiva, seu jeito de explicar me tranquilizava bastante! obrigadaa 💗💗" },
+  { texto: "fico muito grata pela leitura! e queria elogiar tbm, pq foi maravilhosaa!! bateu 100% com a realidade, sem por nem tirar 😭 e respondeu todas as minhas dúvidas!! eu gostei muito da sua abordagem, com certeza voltarei a tirar com você , mt obrigado! boa noite<3" },
+  { texto: "Cara, eu nunca vi algo tão absurdamente certeiro na minha vida. Muito obrigado!" },
+  { texto: "Ai muito muito muito obrigada mesmo. Ressoou muito e agora sei que atitude tomar sobre ela. Você arrasa demais" },
+  { texto: "simplesmente amei sua explicação!!! faz muito muito sentido MESMO agradeço imensamente pela leitura ❤️ te achei muito atenciosa e você explica super bem 🥰 parabéns pelo trabalho incrível boa noite e sucesso!!" },
+  { texto: "obrigada demais pelo atendimento eu amei adorei demais bateu muito e respondeu mt o que eu queria saber" },
+  { texto: "nossa amg, me definiu totalmente eu senti muita verdade pq realmente me definiu todinho kkkkkk sou muito tímido e fechado, realmente demoro a me abrir mais com as pessoas amei a tiragem!! obrigado pelas explicações viu? Explica super bem boa noite! venho mais vezes🫶🫶" },
+  { texto: "Vc é maravilhosa, agora quero que seja minha cartomante sempre. Obrigada pela luz e muito sucesso na sua jornada. Eu ouvi o áudio -por sinal mt bem explicado- e to pulando 00h15 kkkkkk bjs boa noite ❤️❤️" },
+  { texto: "amii, muito obrigada,eu senti muita verdade nas suas palavras, parecia que você realmente estava entendendo o que eu tô vivendo,me ajudou a clarear muita coisa na minha cabeça e até me deixou mais calma,obgd por ter feito tudo com tanto cuidado e carinho 🥹" },
+  { texto: "Meu deus, pior que tu disse coisa que eu nem citei né KKKKKKKKKKKKKK Faz muito sentido a leitura" },
+  { texto: "Aaa amg, vc e perfeita dms, gosto muito das suas tiragens pq vc explica direitinho, com as suas tiragens, eu soube oq fazer com certas situações e tem muita paciência cmg, msm eu sempre perguntando quase a msm coisa 🙄 KKKKKKK, vc arrasa dms AMORRR 🫶🏻🫶🏻🫶🏻" },
+  { texto: "ai nossa q tiragem linda eu amei muuito, amei sua explicação bem detalhada, consegui entender tudo muito obrigadaa" },
+  { texto: "muito obrigado viu amiga, eu amei sua leitura com certeza vou ler mais vezes com vc uma querida me deu super atenção e entrou no assunto" },
+  { texto: "mds vc explica tão bem e de uma forma mt clara e atenciosa 😭 amei mt e mt obgda! 🫶" },
+  { texto: "muito obrigada diva você explica muuuuito bem eu amo suas tiragens ❤️ fica tranquila em relação a demora eu esperaria a noite inteira pq vc é boa demais kkkkkkkk" },
+  { texto: "eu to encantada com sua tiragem foi muito completa sério tudo se encaixou tao bem vc realmente é boa no que faz muito obrigada mesmo sério foi mt mt mt boa" },
+  { texto: "Babado divaaa tudo faz muito sentido!!!! Gostei muito da leitura, super explicativa. vou recomendar com certeza. muito obrigada!!!! Boa noite" },
+  { texto: "amiga... parece ate q vc estava com uma câmera na minha vida ele realmente é muito menos objetivo não tem clareza mesmo eu precisava muito desse conselho!! amei amei amei tiragem perfeita volto mais vezes" },
+  { texto: "nossa!! Sua leitura é muito limpa, bem clara mesmo. Gostei bastante! Muito obrigada, estarei tomando cuidado, farei o que foi recomendado e certamente estarei entrando em contato novamente, muito obrigada mesmo!!" },
+  { texto: "muito muito obrigada mesmo, amei a leitura e a forma que você explica. até as perguntas de sim ou não são bem elaboradas🥹🥹 com crtz vou aparecer mais vezes" },
+  { texto: "Mais uma vez fico muito agradecida pelo seu trabalho maravilhoso e perfeito como sempre, também agradeço pela oportunidade de tirar com você e poder ficar em paz com todas as dúvidas que você responde e tira da nossa mente. Muito obrigada mesmo!! 🤧💗🙏" },
+  { texto: "meu deus amg, vc falou TUDO de vdd. Até mesmo de quando as pessoas que interferiram (o que foi isso aconteceu de vdd) e até mesmo quando a gnt tá conversando ainda, as vezes ele sim e outras não você arrasou amg, e muito obrigada pela atenção de vdd☺️🫶🏼" },
+  { texto: "Muito obrigada meu amor, me emocionei bastante pois é exatamente isso que eu sinto. Tenha um ótimo fim de tarde!! 💖💖" },
+  { texto: "Nossa, você foi muito certeira tá. Consegui enxergar ela através das suas palavras. Adorei, vou fazer mais tiragens com você futuramente!! E te recomendar para minhas amigas" },
+  { texto: "Muito Obgd, desculpa qualquer coisa é que você é tão certeira em tudo que quando acontece algo eu corro pra jogar por que me acalma" },
+  { texto: "mds diva me acabo q vc é SUPER certeira obrigada!! sério" },
+  { texto: "sempre fico chocada em como vc é certeira, misericórdia mt obrigada pela tiragem diva maravilhosa" },
+  { texto: "Amg amo [seu] jeito que vc explica! Sabe usar mt bem as palavras!" },
+  { texto: "Bom dia, perdão o sumiço amiga, eu acabei dormindo, e hoje pela manhã só encontrei uma brecha agora para poder ouvir com calma. Foi bem esclarecedor sim, me deixou bem mais calma. Você explica muito bem!! Muito obrigada, de verdade!! Pretendo retornar mais vezes!" },
 ];
 
 export const duvidas = [
@@ -86,22 +831,21 @@ export const duvidas = [
   { pergunta: "Preciso estar online no horário?", resposta: "Não. Se preferir acompanhar ao vivo, avise no agendamento. Se não, o áudio fica guardado na conversa para quando você puder ouvir." },
   { pergunta: "Como faço o pagamento?", resposta: "Por Pix ou cartão, no momento do agendamento. O horário fica reservado assim que o pagamento é confirmado." },
   { pergunta: "Posso remarcar?", resposta: "Sim, com pelo menos 24 horas de antecedência. É só avisar pelo WhatsApp." },
-  { pergunta: "Como uso um cupom ou promoção?", resposta: "Informe o cupom ou o nome da promoção na mensagem de agendamento. O desconto é aplicado antes do pagamento." },
   { pergunta: "A leitura substitui médico, advogado ou terapeuta?", resposta: "Não. O tarot é uma ferramenta de orientação e autoconhecimento. Questões de saúde, jurídicas ou financeiras devem ser tratadas com profissionais da área." },
 ];
 
 // A tiragem do topo: cinco arcanos, cada um com uma mensagem curta
 // e a consulta que conversa com ele.
 export const arcanos = [
-  { numero: "XVIII", nome: "A Lua", icone: "lua", consulta: "tres",
+  { numero: "XVIII", nome: "A Lua", icone: "lua", consulta: "templo-da-lua",
     mensagem: "Nem tudo está claro ainda. Dê tempo ao que está se revelando." },
-  { numero: "XIX", nome: "O Sol", icone: "sol", consulta: "ano",
+  { numero: "XIX", nome: "O Sol", icone: "sol", consulta: "previsao-anual",
     mensagem: "Um ciclo de clareza se abre. Bom momento para decidir com calma." },
-  { numero: "XVII", nome: "A Estrela", icone: "estrela", consulta: "acompanhamento",
+  { numero: "XVII", nome: "A Estrela", icone: "estrela", consulta: "templo-das-estrelas",
     mensagem: "Depois da tempestade vem a esperança. Cuide de você nesta fase." },
-  { numero: "VI", nome: "Os Enamorados", icone: "vinculo", consulta: "amor",
+  { numero: "VI", nome: "Os Enamorados", icone: "vinculo", consulta: "alma-gemea",
     mensagem: "Uma escolha do coração pede atenção. Ouça o que você sente." },
-  { numero: "X", nome: "A Roda", icone: "roda", consulta: "mesa",
+  { numero: "X", nome: "A Roda", icone: "roda", consulta: "roda-da-fortuna",
     mensagem: "As coisas estão se movendo. Observe o que muda ao seu redor." },
 ];
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { depoimentos, duvidas, INSTAGRAM, linkWhats, MENSAGEM_GERAL, passos } from "../dados.js";
 import { Icone } from "./Icones.jsx";
 import { Marca } from "./Topo.jsx";
@@ -21,18 +22,27 @@ export function ComoFunciona() {
   );
 }
 
+const VISIVEIS = 6;
+
 export function Depoimentos() {
+  const [todos, setTodos] = useState(false);
+  const lista = todos ? depoimentos : depoimentos.slice(0, VISIVEIS);
   return (
     <section className="vozes" aria-labelledby="vozes-titulo">
       <h2 id="vozes-titulo" className="titulo-secao">Quem já <span className="script">consultou</span></h2>
       <div className="vozes__grade">
-        {depoimentos.map((d, i) => (
+        {lista.map((d, i) => (
           <figure className="voz" key={i}>
             <blockquote>“{d.texto}”</blockquote>
-            <figcaption>{d.autora} · {d.consulta}</figcaption>
+            <figcaption>{d.tiragem ? `Cliente · ${d.tiragem}` : "Cliente"}</figcaption>
           </figure>
         ))}
       </div>
+      {depoimentos.length > VISIVEIS && (
+        <button type="button" className="vozes__mais" aria-expanded={todos} onClick={() => setTodos((t) => !t)}>
+          {todos ? "Mostrar menos" : `Ver mais depoimentos (${depoimentos.length - VISIVEIS})`}
+        </button>
+      )}
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion } from "framer-motion";
-import { linkWhats, promocaoDoMes as pm, promocoes } from "../dados.js";
+import { linkWhats, promocaoDoMes as pm, promocoes, temPromocoes } from "../dados.js";
 import { Icone, Verso } from "./Icones.jsx";
 
 function textoPrazo(fimISO) {
@@ -60,23 +60,26 @@ function TextoComCupom({ texto, cupom }) {
 }
 
 export default function Promocoes() {
+  if (!temPromocoes) return null;
   return (
     <section className="promocoes" id="promocoes" aria-labelledby="promo-titulo">
       <div className="promocoes__cabeca">
         <p className="rotulo rotulo--vela">Promoções ativas</p>
-        <h2 id="promo-titulo" className="titulo-secao">A carta do <span className="script">mês</span></h2>
+        <h2 id="promo-titulo" className="titulo-secao">
+          {pm ? <>A carta do <span className="script">mês</span></> : <>Promoções</>}
+        </h2>
       </div>
 
       <div className="promocoes__grade">
-        <CartaDoMes />
+        {pm && <CartaDoMes />}
         <div className="promocoes__lado">
-          <div className="promo-mes-texto">
+          {pm && <div className="promo-mes-texto">
             <p>{pm.texto}</p>
             <a className="botao botao--vela" href={linkWhats(`Olá, Lya! Quero a promoção do mês: ${pm.nome} por R$ ${pm.preco}.`)} target="_blank" rel="noopener">
               Quero a carta do mês
             </a>
-          </div>
-          <ul className="promo-lista">
+          </div>}
+          {promocoes.length > 0 && <ul className="promo-lista">
             {promocoes.map((p) => (
               <li className="promo" key={p.titulo}>
                 <Icone id={p.icone} className="promo__icone" />
@@ -86,7 +89,7 @@ export default function Promocoes() {
                 </div>
               </li>
             ))}
-          </ul>
+          </ul>}
         </div>
       </div>
     </section>

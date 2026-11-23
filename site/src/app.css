@@ -110,6 +110,77 @@ html { scroll-padding-top: 110px; }
 .mesa__lugar:nth-child(2n) .arcano { --giro: 1.1deg; }
 .mesa__lugar:nth-child(3n) .arcano { --giro: -.5deg; }
 
+/* ---------- Mesa: abas por tema ---------- */
+.mesa__cabeca { margin-bottom: 2.2rem; }
+.mesa__abas {
+  display: flex; flex-wrap: wrap; gap: .6rem;
+  margin-bottom: 1.6rem;
+}
+.mesa__aba {
+  appearance: none;
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .55rem 1rem;
+  font: inherit; font-size: .95rem; font-weight: 700;
+  color: var(--pergaminho);
+  background: rgba(30, 16, 41, .35);
+  border: 1px solid rgba(244, 235, 220, .28);
+  border-radius: var(--raio-pilula);
+  cursor: pointer;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.mesa__aba svg { width: 18px; height: 18px; color: var(--vela); }
+.mesa__aba:hover { border-color: var(--vela); }
+.mesa__aba[aria-selected="true"] { background: var(--vela); border-color: var(--vela); color: var(--noite); }
+.mesa__aba[aria-selected="true"] svg { color: var(--noite); }
+.mesa__conta { font-size: .78rem; font-weight: 400; opacity: .75; }
+.mesa__tema { max-width: 640px; margin-bottom: 2.6rem; color: var(--pergaminho-mudo); }
+
+/* ---------- Carta: perguntas da tiragem ---------- */
+.arcano__perguntas {
+  width: 100%;
+  margin-bottom: 1.2rem;
+  text-align: left;
+  font-size: .93rem;
+  color: var(--tinta-suave);
+}
+.arcano__perguntas summary {
+  text-align: center;
+  font-weight: 700;
+  color: var(--toalha);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+.arcano__perguntas ol { margin: .8rem 0 0; padding-left: 1.3rem; display: grid; gap: .35rem; }
+.arcano__valores {
+  list-style: none; padding: 0; margin: 0 0 1.3rem;
+  width: 100%; max-width: 240px;
+  display: grid; gap: .3rem;
+}
+.arcano__valores li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  padding-bottom: .3rem;
+  border-bottom: 1px dashed var(--linha-forte);
+  color: var(--tinta-suave);
+}
+.arcano__valores strong { font-family: var(--font-display); font-size: 1.45rem; color: var(--ameixa); }
+
+/* ---------- Depoimentos: ver mais ---------- */
+.vozes__mais {
+  appearance: none;
+  display: block;
+  margin: 2.4rem auto 0;
+  padding: .8rem 1.6rem;
+  font: inherit; font-weight: 700;
+  color: var(--ameixa);
+  background: transparent;
+  border: 1px solid var(--ameixa);
+  border-radius: var(--raio-pilula);
+  cursor: pointer;
+  transition: background-color .2s, color .2s;
+}
+.vozes__mais:hover { background: var(--ameixa); color: var(--nevoa); }
+
 /* ---------- Responsivo ---------- */
 @media (max-width: 860px) {
   .tiragem__mesa { height: 330px; max-width: 360px; }

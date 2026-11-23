@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { arcanos, consultaPorId } from "../dados.js";
+import { arcanos, consultaPorId, temPromocoes } from "../dados.js";
 import { Frente, Icone, Verso } from "./Icones.jsx";
 
 const embaralhar = (lista) => {
@@ -119,8 +119,8 @@ export default function Hero({ onVerConsulta }) {
           Você escolhe a consulta, agenda o horário e recebe a leitura em áudio no seu WhatsApp, no dia marcado.
         </p>
         <div className="hero__acoes">
-          <a className="botao" href="#consultas">Ver consultas e valores</a>
-          <a className="botao botao--contorno" href="#promocoes">Promoção do mês</a>
+          <a className="botao" href="#consultas">Ver tiragens e valores</a>
+          {temPromocoes && <a className="botao botao--contorno" href="#promocoes">Promoções</a>}
         </div>
       </div>
       <Tiragem onVerConsulta={onVerConsulta} />

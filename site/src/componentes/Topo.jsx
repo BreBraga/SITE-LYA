@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MENSAGEM_GERAL, linkWhats } from "../dados.js";
+import { MENSAGEM_GERAL, linkWhats, temPromocoes } from "../dados.js";
 import { Icone } from "./Icones.jsx";
 
 export function Marca() {
@@ -25,7 +25,7 @@ export default function Topo() {
     <header className={`topo${rolou ? " topo--rolou" : ""}`}>
       <Marca />
       <nav className="topo__nav" aria-label="Seções">
-        <a href="#promocoes">Promoções</a>
+        {temPromocoes && <a href="#promocoes">Promoções</a>}
         <a href="#consultas">Consultas</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#duvidas">Dúvidas</a>

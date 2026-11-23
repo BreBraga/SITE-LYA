@@ -3,7 +3,7 @@
 
 // Número do WhatsApp: código do país + DDD + número, só dígitos.
 export const WHATSAPP = "5521983140041";
-export const INSTAGRAM = "https://instagram.com/lyaprettywitchy";
+export const INSTAGRAM = "https://www.instagram.com/lygia2.0/";
 
 export const linkWhats = (mensagem) =>
   `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`;

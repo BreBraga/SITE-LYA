@@ -91,7 +91,7 @@ export default function Mesa({ chamada }) {
     setPulso(null);
     setVirada(null);
     const rolar = setTimeout(() => {
-      document.getElementById(`c-${chamada.id}`)?.scrollIntoView({ behavior: reduzido ? "auto" : "smooth", block: "center" });
+      document.getElementById(`c-${chamada.id}`)?.scrollIntoView({ behavior: reduzido ? "auto" : "smooth", block: "center", inline: "center" });
     }, 60);
     const virar = setTimeout(() => setVirada(chamada.id), 650);
     const acender = setTimeout(() => setPulso(chamada.id), 900);
@@ -100,6 +100,8 @@ export default function Mesa({ chamada }) {
   }, [chamada, reduzido]);
 
   // ao trocar de tema as cartas aparecem na hora (a animação de entrada é só da primeira vez)
+  // no celular as cartas ficam numa fileira lateral: sem animação de entrada
+  const fileira = typeof window !== "undefined" && window.matchMedia("(max-width: 760px)").matches;
   const trocarAba = (id) => { setAba(id); setVirada(null); setRevelada(true); };
   const atual = categoriaPorId(aba);
   const lista = consultas.filter((c) => c.categoria === aba);
@@ -137,9 +139,9 @@ export default function Mesa({ chamada }) {
           {lista.map((c, i) => (
             <motion.div
               key={c.id}
-              className={`mesa__lugar${virada === c.id ? " mesa__lugar--virada" : ""}`}
+              className="mesa__lugar"
               variants={ENTRADA}
-              initial={reduzido || revelada ? false : "oculta"}
+              initial={reduzido || revelada || fileira ? false : "oculta"}
               whileInView="visivel"
               viewport={{ once: true, amount: 0.15 }}
               transition={{ type: "spring", stiffness: 90, damping: 16, delay: (i % 4) * 0.08 }}

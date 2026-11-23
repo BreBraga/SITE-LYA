@@ -185,6 +185,8 @@ html { scroll-padding-top: 110px; }
     radial-gradient(ellipse at 50% 35%, var(--toalha), var(--ameixa) 70%, var(--verso));
 }
 .carta-tiragem__frente::before, .carta-tiragem__frente::after { border: 1px solid rgba(224,168,106,.75); }
+/* rotateY(0) explícito: o Safari do iPhone só esconde o lado de trás com transform 3D nas duas faces */
+.carta-tiragem__frente { transform: rotateY(0deg); }
 .carta-tiragem__frente:focus-visible { outline: 2px solid var(--vela); outline-offset: 4px; }
 .carta-tiragem__formato { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--lavanda); }
 .carta-tiragem__icone { width: 46px; height: 46px; color: var(--vela); margin: .4rem 0 .2rem; }
@@ -285,7 +287,20 @@ html { scroll-padding-top: 110px; }
   .mesa__baralho { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 760px) {
-  .mesa__baralho { grid-template-columns: repeat(2, 1fr); gap: 1.2rem .9rem; }
+  /* no celular as cartas ficam numa fileira que desliza para o lado:
+     uma carta grande por vez, que vira no lugar com tudo no verso */
+  .mesa__baralho {
+    display: flex; gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: calc(-1 * clamp(1.2rem, 4vw, 3rem));
+    padding: .6rem clamp(1.2rem, 4vw, 3rem) 1.6rem;
+    scroll-padding-inline: clamp(1.2rem, 4vw, 3rem);
+    scrollbar-width: none;
+  }
+  .mesa__baralho::-webkit-scrollbar { display: none; }
+  .mesa__lugar { flex: 0 0 min(78vw, 320px); scroll-snap-align: center; }
+  .carta-tiragem { aspect-ratio: 3 / 4.6; }
   /* abas numa linha só, com rolagem lateral */
   .mesa__abas {
     flex-wrap: nowrap; overflow-x: auto;
@@ -295,13 +310,6 @@ html { scroll-padding-top: 110px; }
   }
   .mesa__abas::-webkit-scrollbar { display: none; }
   .mesa__aba { flex: none; }
-  /* no celular a carta virada ocupa a linha toda, para caber o texto */
-  .mesa__lugar--virada { grid-column: 1 / -1; justify-content: center; }
-  .mesa__lugar--virada .carta-tiragem { flex: 0 1 380px; aspect-ratio: 4 / 5; }
-  .carta-tiragem__nome { font-size: 1.2rem; }
-  .carta-tiragem__preco { font-size: 2.1rem; }
-  .carta-tiragem__icone { width: 38px; height: 38px; }
-  .carta-tiragem__dica { font-size: .62rem; bottom: 1rem; }
 }
 @media (max-width: 860px) {
   .tiragem__mesa { height: 330px; max-width: 360px; }
